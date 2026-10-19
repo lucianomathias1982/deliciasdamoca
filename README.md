@@ -41,10 +41,20 @@ python3 -m http.server 5178
 ```
 Abra http://localhost:5178
 
-## Publicar no GitHub Pages
-1. No GitHub: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)`**.
-2. O site fica em `https://lucianomathias1982.github.io/deliciasdamoca/`.
-3. **Domínio próprio:** crie um arquivo `CNAME` com o domínio (ex.: `deliciasdamoca.com.br`) e aponte o DNS para o GitHub Pages ([guia](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)).
+## Publicação (GitHub Pages + domínio próprio)
+O site é publicado pelo GitHub Pages a partir da branch `main` (raiz) e responde em **https://deliciasdamoca.com.br** (arquivo `CNAME`). Todo push na `main` atualiza o site em 1–2 minutos.
+
+DNS (zona do domínio na Hostinger):
+
+| Tipo | Nome | Valor |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | lucianomathias1982.github.io |
+
+Remova os registros A/CNAME de "parking" que a Hostinger cria por padrão. Não mexa nos registros MX/TXT do e-mail.
 
 ## Datas comemorativas (calendário de coleções)
 Já estão no site: Halloween, Black Friday, presentes de fim de ano para empresas, Natal, Ano Novo, Volta às aulas, Carnaval, Dia da Mulher, Páscoa, Dia das Mães, Dia dos Namorados, Festa Junina, Dia do Amigo, Dia dos Avós, Dia dos Pais, Dia do Cliente, Dia da Secretária, Dia das Crianças e Dia dos Professores.
