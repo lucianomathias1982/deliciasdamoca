@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delícias da Moça — Biscoitos Artesanais</title>
+  <meta name="description" content="Biscoitos artesanais decorados à mão para datas comemorativas. Encomende a Coleção Halloween pelo WhatsApp ou e-mail." />
+  <meta name="theme-color" content="#5a3424" />
+
+  <meta property="og:title" content="Delícias da Moça — Biscoitos Artesanais" />
+  <meta property="og:description" content="Biscoitos decorados à mão para cada data especial. Coleção Halloween já disponível!" />
+  <meta property="og:image" content="assets/img/hero.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍪</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+</head>
+<body>
+  <header class="topo" id="topo">
+    <div class="wrap topo__in">
+      <a class="logo" href="#inicio" aria-label="Delícias da Moça — início">
+        <span class="logo__icone" aria-hidden="true">🍪</span>
+        <span class="logo__txt">Delícias <em>da</em> Moça</span>
+      </a>
+      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">☰</button>
+      <nav class="nav" id="nav">
+        <a href="#colecao">Halloween</a>
+        <a href="#como">Como pedir</a>
+        <a href="#calendario">Coleções</a>
+        <a href="#sobre">A Moça</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a class="btn btn--sm btn--zap" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div class="hero__txt">
+          <p class="selo">🎃 Lançamento: Coleção Halloween</p>
+          <h1>Biscoitos artesanais que <span class="sublinhado">contam histórias</span></h1>
+          <p class="hero__lead">Amanteigados feitos em pequenos lotes e decorados um a um, à mão, para deixar cada data comemorativa ainda mais doce.</p>
+          <div class="hero__cta">
+            <a class="btn btn--laranja" href="#colecao">Ver Coleção Halloween</a>
+            <a class="btn btn--linha" data-zap="Olá! Quero saber mais sobre os biscoitos da Delícias da Moça 🍪" href="#">Falar no WhatsApp</a>
+          </div>
+          <p class="hero__prazo" data-prazo></p>
+        </div>
+        <figure class="hero__img">
+          <img src="assets/img/hero.jpg" alt="Biscoitos decorados de Halloween: abóbora, fantasma, morcego, caveirinha, chapéu de bruxa e gatinho" data-fallback="🎃👻🦇" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- COLEÇÃO DA VEZ -->
+    <section class="colecao" id="colecao">
+      <div class="wrap">
+        <header class="sec-head sec-head--claro">
+          <p class="kicker" data-colecao-chamada></p>
+          <h2 data-colecao-titulo></h2>
+          <p data-colecao-texto></p>
+          <p class="prazo-pill" data-prazo></p>
+        </header>
+        <div class="produtos" id="produtos"></div>
+      </div>
+    </section>
+
+    <!-- COMO PEDIR -->
+    <section class="como" id="como">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="kicker">Simples assim</p>
+          <h2>Como fazer sua encomenda</h2>
+        </header>
+        <ol class="passos">
+          <li><span class="passo__n">1</span><h3>Escolha</h3><p>Monte seu pedido aqui no site, escolhendo os biscoitos e as quantidades.</p></li>
+          <li><span class="passo__n">2</span><h3>Envie</h3><p>Mande o pedido pronto pelo WhatsApp ou por e-mail com um clique.</p></li>
+          <li><span class="passo__n">3</span><h3>Confirme</h3><p>A gente responde confirmando data, entrega ou retirada e o valor final.</p></li>
+          <li><span class="passo__n">4</span><h3>Pague e receba</h3><p>Pagamento por Pix para reservar. Depois é só abrir a caixinha e se apaixonar.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PERSONALIZADOS -->
+    <section class="personal">
+      <div class="wrap personal__in">
+        <div>
+          <p class="kicker">Sob encomenda</p>
+          <h2>Tem uma ocasião especial?</h2>
+          <p>Aniversários, chá de bebê, batizado, casamento, lembrancinhas de escola e presentes corporativos com a sua marca. A gente cria o biscoito do seu jeito.</p>
+        </div>
+        <a class="btn btn--marrom" data-zap="Olá! Gostaria de um orçamento de biscoitos personalizados para: " href="#">Pedir orçamento</a>
+      </div>
+    </section>
+
+    <!-- CALENDÁRIO -->
+    <section class="calendario" id="calendario">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="kicker">Ano todo tem motivo</p>
+          <h2>Próximas coleções</h2>
+          <p>Cada data especial ganha uma coleção nova. Toque em “Me avise” e você fica sabendo antes de todo mundo quando abrirmos as encomendas.</p>
+        </header>
+        <div class="cal" id="cal"></div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+      <div class="wrap sobre__in">
+        <figure class="sobre__img">
+          <img src="assets/img/sobre.jpg" alt="Mãos decorando biscoitos com glacê real" data-fallback="👩‍🍳" />
+        </figure>
+        <div class="sobre__txt">
+          <p class="kicker">Prazer, a Moça</p>
+          <h2>Feito em casa, com receita de família</h2>
+          <p>A Delícias da Moça nasceu na nossa cozinha. Os biscoitos que faziam sucesso nos aniversários, nas festas da escola e nos cafés com os amigos viraram pedido, e os pedidos viraram negócio.</p>
+          <p>Cada biscoito é assado em pequenos lotes, com manteiga de verdade, e decorado à mão com glacê real, um detalhe de cada vez. Por isso trabalhamos com encomendas e quantidades limitadas: para que tudo chegue fresquinho e do jeitinho que você imaginou.</p>
+          <ul class="selos">
+            <li>🧈 Manteiga de verdade</li>
+            <li>✋ Decorado à mão</li>
+            <li>📦 Embalado para presente</li>
+            <li>🌱 Sem conservantes</li>
+          </ul>
+          <p class="assinatura">Com carinho, a Moça</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="duvidas" id="duvidas">
+      <div class="wrap wrap--estreito">
+        <header class="sec-head">
+          <p class="kicker">Dúvidas</p>
+          <h2>Perguntas frequentes</h2>
+        </header>
+        <details><summary>Com quanta antecedência preciso encomendar?</summary><p>Para as coleções de datas comemorativas, respeite o prazo indicado na coleção. Para personalizados, peça com pelo menos 7 dias de antecedência. Nossa produção é artesanal e limitada.</p></details>
+        <details><summary>Quanto tempo os biscoitos duram?</summary><p>Fechados na embalagem original, em local fresco e seco, duram cerca de 20 dias. Não precisam de geladeira (a umidade estraga o glacê).</p></details>
+        <details><summary>Vocês entregam?</summary><p>Sim! Combinamos entrega ou retirada na hora de confirmar o pedido. A taxa de entrega depende do bairro.</p></details>
+        <details><summary>Quais as formas de pagamento?</summary><p>Pix (preferencial) ou transferência. O pedido é reservado após o pagamento de 50% do valor, e o restante é pago na entrega.</p></details>
+        <details><summary>E alergias e restrições?</summary><p>Nossos biscoitos contêm trigo, ovos, leite e derivados, e podem conter traços de castanhas. Ainda não temos versão sem glúten ou vegana.</p></details>
+        <details><summary>Dá para colocar nome ou logotipo?</summary><p>Dá sim! Fazemos tags personalizadas e biscoitos com nome, iniciais ou a marca da sua empresa. Peça um orçamento pelo WhatsApp.</p></details>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+      <div class="wrap contato__in">
+        <h2>Bateu vontade?</h2>
+        <p>Fale com a gente. Respondemos rapidinho!</p>
+        <div class="contato__btns">
+          <a class="btn btn--zap" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#">💬 WhatsApp</a>
+          <a class="btn btn--linha-claro" data-mail="Encomenda pelo site" href="#">✉️ <span data-email></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="wrap rodape__in">
+      <p><strong>Delícias da Moça</strong> · Biscoitos artesanais · <span data-cidade></span></p>
+      <p><a data-insta href="#" hidden>Instagram</a></p>
+      <p class="rodape__mini">© <span data-ano></span> Delícias da Moça. Feito com manteiga e amor.</p>
+    </div>
+  </footer>
+
+  <!-- Sacola flutuante -->
+  <button class="sacola-btn" id="sacolaBtn" aria-controls="sacola" aria-expanded="false" hidden>
+    🛍️ <span>Meu pedido</span> <b id="sacolaQtd">0</b>
+  </button>
+  <aside class="sacola" id="sacola" aria-label="Seu pedido" hidden>
+    <div class="sacola__head">
+      <h2>Seu pedido</h2>
+      <button class="sacola__fechar" aria-label="Fechar">✕</button>
+    </div>
+    <ul class="sacola__itens" id="sacolaItens"></ul>
+    <p class="sacola__total" id="sacolaTotal"></p>
+    <label class="campo">Seu nome<input id="pNome" autocomplete="name" /></label>
+    <label class="campo">Data desejada<input id="pData" type="date" /></label>
+    <label class="campo">Entrega ou retirada?
+      <select id="pEntrega"><option>Entrega</option><option>Retirada</option></select>
+    </label>
+    <label class="campo">Observações<textarea id="pObs" rows="2" placeholder="Bairro, nome na tag, cores…"></textarea></label>
+    <div class="sacola__acoes">
+      <button class="btn btn--zap" id="enviarZap">Enviar pelo WhatsApp</button>
+      <button class="btn btn--linha" id="enviarMail">Enviar por e-mail</button>
+    </div>
+    <p class="sacola__nota">O valor final e a disponibilidade são confirmados na conversa. Nada é cobrado aqui no site.</p>
+  </aside>
+
+  <a class="zap-flutuante" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#" aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.2-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1 1 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5l-.6-.4z"/></svg>
+  </a>
+
+  <script src="assets/js/config.js?v=1"></script>
+  <script src="assets/js/main.js?v=1"></script>
+</body>
+</html>
