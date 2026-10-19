@@ -128,7 +128,7 @@ window.CONFIG = {
     { id: "amigo", nome: "Dia do Amigo", regra: "fixa:07-20", emoji: "🤝", img: "assets/img/cal-amigo.jpg" },
     { id: "avos", nome: "Dia dos Avós", regra: "fixa:07-26", emoji: "👵", img: "assets/img/cal-avos.jpg" },
     { id: "pais", nome: "Dia dos Pais", regra: "domingo:08:2", emoji: "👔", img: "assets/img/cal-pais.jpg" },
-    { id: "cliente", nome: "Dia do Cliente", regra: "fixa:09-15", emoji: "⭐", img: "" },
+    { id: "cliente", nome: "Dia do Cliente", regra: "fixa:09-15", emoji: "⭐", img: "assets/img/cal-cliente.jpg" },
     { id: "secretaria", nome: "Dia da Secretária", regra: "fixa:09-30", emoji: "📎", img: "assets/img/cal-secretaria.jpg" },
     { id: "criancas", nome: "Dia das Crianças", regra: "fixa:10-12", emoji: "🧸", img: "assets/img/cal-criancas.jpg" },
     { id: "professores", nome: "Dia dos Professores", regra: "fixa:10-15", emoji: "🍎", img: "assets/img/cal-professores.jpg" },
