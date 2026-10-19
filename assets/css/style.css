@@ -189,12 +189,12 @@ section { padding: clamp(56px, 9vw, 104px) 0; }
 .produto__preco b { font-family: var(--fonte-titulo); font-size: 1.5rem; color: var(--marrom); }
 .produto__preco span { color: var(--texto-suave); font-size: .9rem; }
 .qtd { display: flex; align-items: center; gap: 10px; }
-.qtd button {
+.qtd button:not(.btn) {
   width: 40px; height: 40px; border-radius: 50%;
   border: 2px solid var(--borda); background: #fff; color: var(--marrom);
   font-size: 1.3rem; font-weight: 800; cursor: pointer; line-height: 1;
 }
-.qtd button:hover { border-color: var(--marrom); }
+.qtd button:not(.btn):hover { border-color: var(--marrom); }
 .qtd output { min-width: 2ch; text-align: center; font-weight: 800; font-size: 1.15rem; }
 .qtd .btn { margin-left: auto; }
 .produto.no-pedido { outline: 3px solid var(--laranja); }

@@ -1,6 +1,6 @@
 # Delícias da Moça 🍪
 
-Site da **Delícias da Moça**, uma marca de biscoitos artesanais decorados à mão para datas comemorativas.
+Site da **Delícias da Moça**, uma marca de biscoitos artesanais caseiros, polvilhados com açúcar de confeiteiro, para datas comemorativas.
 As vendas são feitas por **WhatsApp** e **e-mail**: o cliente monta o pedido no site e envia a mensagem pronta com um clique. O site não tem pagamento online.
 
 O site é estático (HTML + CSS + JS puro, sem build), então dá para hospedar de graça no **GitHub Pages**.
