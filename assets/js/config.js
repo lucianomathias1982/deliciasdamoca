@@ -10,7 +10,7 @@ window.CONFIG = {
   slogan: "Biscoitos artesanais feitos com carinho",
 
   // WhatsApp: só números, com 55 + DDD. Ex.: "5511912345678"
-  whatsapp: "5511999999999", // TODO: trocar pelo número real
+  whatsapp: "5511999672229",
   email: "contato@deliciasdamoca.com.br", // TODO: trocar quando o domínio estiver pronto
   instagram: "", // ex.: "deliciasdamoca" (deixe vazio para esconder)
   cidade: "São Paulo - SP", // TODO: cidade/região de entrega
