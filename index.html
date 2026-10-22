@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Delícias da Moça — Biscoitos Artesanais</title>
-  <meta name="description" content="Biscoitos artesanais caseiros, polvilhados com açúcar de confeiteiro, para datas comemorativas. Encomende a Coleção Halloween pelo WhatsApp ou e-mail." />
+  <title>Delícias da Moça — Biscoitos de Natal</title>
+  <meta name="description" content="Biscoitos artesanais de Natal: receitas de família, caixas de presente, calendário do Advento e saquinhos. Encomendas pelo WhatsApp ou e-mail." />
   <link rel="canonical" href="https://deliciasdamoca.com.br/" />
-  <meta name="theme-color" content="#5a3424" />
+  <meta name="theme-color" content="#17302a" />
 
-  <meta property="og:title" content="Delícias da Moça — Biscoitos Artesanais" />
-  <meta property="og:description" content="Biscoitos caseiros em formatos divertidos para cada data especial. Coleção Halloween já disponível!" />
-  <meta property="og:image" content="https://deliciasdamoca.com.br/assets/img/hero.jpg" />
+  <meta property="og:title" content="Delícias da Moça — Coleção de Natal" />
+  <meta property="og:description" content="Caixas de Natal, calendário do Advento e saquinhos de biscoitos artesanais, embalados um a um." />
+  <meta property="og:image" content="https://deliciasdamoca.com.br/assets/img/natal/hero.jpg" />
   <meta property="og:url" content="https://deliciasdamoca.com.br/" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:type" content="website" />
@@ -18,24 +18,53 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍪</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Federo&family=Jost:wght@300;400;500&family=Poiret+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=11" />
 </head>
 <body>
+  <!-- Ornamentos reutilizáveis -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="orn" viewBox="0 0 320 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+        <path d="M146 12 C130 12 128 3 110 4 C92 5 92 19 72 19 C56 19 50 11 34 11 C24 11 16 13 6 12" />
+        <path d="M174 12 C190 12 192 3 210 4 C228 5 228 19 248 19 C264 19 270 11 286 11 C296 11 304 13 314 12" />
+        <path d="M110 4 C103 8 105 14 112 13 C116 12 115 8 112 8" />
+        <path d="M210 4 C217 8 215 14 208 13 C204 12 205 8 208 8" />
+        <path d="M72 19 C68 15 70 11 74 12" />
+        <path d="M248 19 C252 15 250 11 246 12" />
+      </g>
+      <path d="M160 3 L169 12 L160 21 L151 12Z" fill="currentColor" />
+      <path d="M160 8 L164 12 L160 16 L156 12Z" fill="#f3eadb" />
+      <circle cx="140" cy="12" r="1.6" fill="currentColor" /><circle cx="180" cy="12" r="1.6" fill="currentColor" />
+    </symbol>
+    <symbol id="selo" viewBox="0 0 48 48">
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <line x1="24" y1="1.5" x2="24" y2="7" /><line x1="24" y1="41" x2="24" y2="46.5" />
+        <line x1="1.5" y1="24" x2="7" y2="24" /><line x1="41" y1="24" x2="46.5" y2="24" />
+        <line x1="8.1" y1="8.1" x2="12" y2="12" /><line x1="36" y1="36" x2="39.9" y2="39.9" />
+        <line x1="39.9" y1="8.1" x2="36" y2="12" /><line x1="12" y1="36" x2="8.1" y2="39.9" />
+      </g>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="1.4" />
+      <path d="M24 13 L26.6 20.4 L34 18.6 L28.8 24 L34 29.4 L26.6 27.6 L24 35 L21.4 27.6 L14 29.4 L19.2 24 L14 18.6 L21.4 20.4Z" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <div class="aviso" id="aviso" hidden><span data-aviso-texto></span> <a data-aviso-link href="#"></a></div>
+
   <header class="topo" id="topo">
     <div class="wrap topo__in">
       <a class="logo" href="#inicio" aria-label="Delícias da Moça — início">
-        <span class="logo__icone" aria-hidden="true">🍪</span>
-        <span class="logo__txt">Delícias <em>da</em> Moça</span>
+        <svg aria-hidden="true"><use href="#selo" /></svg>
+        <span class="logo__txt">Delícias da Moça<small>Biscoitos artesanais</small></span>
       </a>
       <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">☰</button>
       <nav class="nav" id="nav">
-        <a href="#colecao">Halloween</a>
-        <a href="#como">Como pedir</a>
-        <a href="#calendario">Coleções</a>
-        <a href="#sobre">A Moça</a>
+        <a href="#sabores">Sabores</a>
+        <a href="#caixas">Caixas</a>
+        <a href="#advento">Advento</a>
+        <a href="#saquinhos">Saquinhos</a>
         <a href="#duvidas">Dúvidas</a>
-        <a class="btn btn--sm btn--zap" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#">WhatsApp</a>
+        <a class="btn btn--sm btn--zap" data-zap="Olá! Vim pelo site e quero encomendar biscoitos de Natal 🎄" href="#">WhatsApp</a>
       </nav>
     </div>
   </header>
@@ -45,31 +74,87 @@
     <section class="hero">
       <div class="wrap hero__in">
         <div class="hero__txt">
-          <p class="selo">🎃 Lançamento: Coleção Halloween</p>
-          <h1>Biscoitos artesanais que <span class="sublinhado">contam histórias</span></h1>
-          <p class="hero__lead">Amanteigados feitos em casa, em pequenos lotes, cortados um a um e polvilhados com açúcar de confeiteiro. Simples, fresquinhos e com gosto de infância.</p>
+          <p class="kicker" data-colecao-chamada></p>
+          <h1>Biscoitos de Natal <em>da Moça</em></h1>
+          <p class="hero__lead">Amanteigados, especiarias e chocolate com sotaque brasileiro. Feitos em casa, em pequenos lotes, e embalados um a um para chegarem perfeitos à sua ceia.</p>
           <div class="hero__cta">
-            <a class="btn btn--laranja" href="#colecao">Ver Coleção Halloween</a>
-            <a class="btn btn--linha" data-zap="Olá! Quero saber mais sobre os biscoitos da Delícias da Moça 🍪" href="#">Falar no WhatsApp</a>
+            <a class="btn btn--terracota" href="#caixas">Ver as caixas</a>
+            <a class="btn btn--linha-claro" href="#advento">Calendário do Advento</a>
           </div>
           <p class="hero__prazo" data-prazo></p>
         </div>
         <figure class="hero__img">
-          <img src="assets/img/hero.jpg" alt="Biscoitos caseiros de Halloween polvilhados com açúcar: morcegos, abóboras, fantasminhas, gatinhos e chapéus de bruxa" data-fallback="🎃👻🦇" />
+          <div class="arco"><img src="assets/img/natal/hero.jpg" alt="Caixa de biscoitos artesanais de Natal polvilhados com açúcar" data-fallback="🎄" /></div>
+          <figcaption>Feito à mão · Natal 2026</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- COLEÇÃO DA VEZ -->
-    <section class="colecao" id="colecao">
+    <!-- SABORES -->
+    <section class="sabores" id="sabores">
       <div class="wrap">
-        <header class="sec-head sec-head--claro">
-          <p class="kicker" data-colecao-chamada></p>
+        <header class="sec-head">
+          <svg class="ornamento" aria-hidden="true"><use href="#orn" /></svg>
+          <p class="kicker">A coleção</p>
           <h2 data-colecao-titulo></h2>
           <p data-colecao-texto></p>
-          <p class="prazo-pill" data-prazo></p>
         </header>
-        <div class="produtos" id="produtos"></div>
+        <div class="sabores__grade" id="saboresGrade"></div>
+      </div>
+    </section>
+
+    <!-- CAIXAS -->
+    <section class="caixas" id="caixas">
+      <div class="wrap">
+        <header class="sec-head">
+          <svg class="ornamento" aria-hidden="true"><use href="#orn" /></svg>
+          <p class="kicker">Para presentear</p>
+          <h2>Caixas de Natal</h2>
+          <p>Cada biscoito vai embalado um a um e cada caixa leva um sachê para conservar a crocância.</p>
+        </header>
+        <div class="produtos" id="caixasGrade"></div>
+      </div>
+    </section>
+
+    <!-- ADVENTO -->
+    <section class="advento" id="advento">
+      <div class="wrap advento__in">
+        <div class="advento__txt">
+          <p class="kicker">De 1º a 24 de dezembro</p>
+          <h2 data-advento-nome></h2>
+          <p data-advento-desc></p>
+          <ul class="advento__lista">
+            <li data-advento-qtd></li>
+            <li data-advento-sabores></li>
+            <li data-advento-entrega></li>
+          </ul>
+          <p class="advento__preco" data-advento-preco></p>
+          <p class="advento__prazo" data-advento-prazo></p>
+          <div class="qtd" data-produto="advento">
+            <button type="button" data-acao="menos" aria-label="Diminuir calendário do Advento">−</button>
+            <output aria-live="polite">0</output>
+            <button type="button" data-acao="mais" aria-label="Aumentar calendário do Advento">+</button>
+            <button type="button" class="btn btn--sm btn--terracota" data-acao="add">Adicionar</button>
+          </div>
+        </div>
+        <div>
+          <div class="advento__grade" id="adventoGrade" role="list" aria-label="O biscoito de cada dia"></div>
+          <p class="advento__dica" id="adventoDica" aria-live="polite">Toque em um dia para ver o biscoito e a festa do dia.</p>
+          <figure class="advento__img"><img data-advento-img alt="Amanteigados em meia-lua polvilhados com açúcar, o biscoito do dia 24" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAQUINHOS -->
+    <section class="saquinhos" id="saquinhos">
+      <div class="wrap">
+        <header class="sec-head">
+          <svg class="ornamento" aria-hidden="true"><use href="#orn" /></svg>
+          <p class="kicker">Mimos menores</p>
+          <h2>Saquinhos</h2>
+          <p>Para lembrancinhas, amigo-secreto, professores e a mesa da ceia.</p>
+        </header>
+        <div class="produtos" id="saquinhosGrade"></div>
       </div>
     </section>
 
@@ -78,38 +163,28 @@
       <div class="wrap">
         <header class="sec-head">
           <p class="kicker">Simples assim</p>
-          <h2>Como fazer sua encomenda</h2>
+          <h2>Como encomendar</h2>
         </header>
         <ol class="passos">
-          <li><span class="passo__n">1</span><h3>Escolha</h3><p>Monte seu pedido aqui no site, escolhendo os biscoitos e as quantidades.</p></li>
-          <li><span class="passo__n">2</span><h3>Envie</h3><p>Mande o pedido pronto pelo WhatsApp ou por e-mail com um clique.</p></li>
-          <li><span class="passo__n">3</span><h3>Confirme</h3><p>A gente responde confirmando data, entrega ou retirada e o valor final.</p></li>
-          <li><span class="passo__n">4</span><h3>Pague e receba</h3><p>Pagamento por Pix para reservar. Depois é só abrir a caixinha e se apaixonar.</p></li>
+          <li class="moldura"><span class="passo__n">1</span><h3>Escolha</h3><p>Monte seu pedido aqui no site, com caixas, calendário e saquinhos.</p></li>
+          <li class="moldura"><span class="passo__n">2</span><h3>Envie</h3><p>Mande o pedido pronto pelo WhatsApp ou por e-mail com um clique.</p></li>
+          <li class="moldura"><span class="passo__n">3</span><h3>Confirme</h3><p>A gente confirma a data, a entrega ou retirada e o valor final.</p></li>
+          <li class="moldura"><span class="passo__n">4</span><h3>Receba</h3><p>Pagamento por Pix para reservar. Depois é só abrir a caixa.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- PERSONALIZADOS -->
+    <!-- EMPRESAS -->
     <section class="personal">
-      <div class="wrap personal__in">
-        <div>
-          <p class="kicker">Sob encomenda</p>
-          <h2>Tem uma ocasião especial?</h2>
-          <p>Aniversários, chá de bebê, batizado, casamento, lembrancinhas de escola e presentes corporativos com a sua marca. A gente cria o biscoito do seu jeito.</p>
-        </div>
-        <a class="btn btn--marrom" data-zap="Olá! Gostaria de um orçamento de biscoitos personalizados para: " href="#">Pedir orçamento</a>
-      </div>
-    </section>
-
-    <!-- CALENDÁRIO -->
-    <section class="calendario" id="calendario">
       <div class="wrap">
-        <header class="sec-head">
-          <p class="kicker">Ano todo tem motivo</p>
-          <h2>Próximas coleções</h2>
-          <p>Cada data especial ganha uma coleção nova. Toque em “Me avise” e você fica sabendo antes de todo mundo quando abrirmos as encomendas.</p>
-        </header>
-        <div class="cal" id="cal"></div>
+        <div class="personal__in moldura">
+          <div>
+            <p class="kicker">Fim de ano</p>
+            <h2>Presentes para empresas</h2>
+            <p>Caixas e saquinhos com tag da sua marca para clientes e equipe. Fazemos a partir de 20 unidades, com prazo combinado.</p>
+          </div>
+          <a class="btn btn--terracota" data-zap="Olá! Gostaria de um orçamento de presentes de Natal para empresa: " href="#">Pedir orçamento</a>
+        </div>
       </div>
     </section>
 
@@ -117,21 +192,34 @@
     <section class="sobre" id="sobre">
       <div class="wrap sobre__in">
         <figure class="sobre__img">
-          <img src="assets/img/sobre.jpg" alt="Assadeira com biscoitos caseiros recém-assados da Moça: corações, estrelas e bonequinhos" data-fallback="👩‍🍳" />
+          <div class="arco"><img src="assets/img/sobre.jpg" alt="Assadeira com biscoitos caseiros recém-assados da Moça: corações, estrelas e bonequinhos" data-fallback="👩‍🍳" /></div>
         </figure>
         <div class="sobre__txt">
           <p class="kicker">Prazer, a Moça</p>
-          <h2>Feito em casa, com receita de família</h2>
+          <h2>Feito em casa, em pequenos lotes</h2>
           <p>A Delícias da Moça nasceu na nossa cozinha. Os biscoitos que faziam sucesso nos aniversários, nas festas da escola e nos cafés com os amigos viraram pedido, e os pedidos viraram negócio.</p>
-          <p>Cada biscoito é assado em pequenos lotes, com manteiga de verdade, cortado à mão e finalizado com açúcar de confeiteiro, do jeitinho que a gente faz para a família. Por isso trabalhamos com encomendas e quantidades limitadas: para que tudo chegue fresquinho e do jeitinho que você imaginou.</p>
+          <p>Cada biscoito é assado em pequenos lotes, com manteiga de verdade e cores que vêm dos próprios ingredientes, como o matcha, o morango e o cacau. Por isso trabalhamos só com encomendas e quantidades limitadas.</p>
           <ul class="selos">
-            <li>🧈 Manteiga de verdade</li>
-            <li>✋ Feito à mão</li>
-            <li>📦 Embalado para presente</li>
-            <li>🌱 Sem conservantes</li>
+            <li>Manteiga de verdade</li>
+            <li>Feito à mão</li>
+            <li>Cores naturais</li>
+            <li>Embalado um a um</li>
           </ul>
           <p class="assinatura">Com carinho, a Moça</p>
         </div>
+      </div>
+    </section>
+
+    <!-- CALENDÁRIO DE COLEÇÕES -->
+    <section class="calendario" id="calendario">
+      <div class="wrap">
+        <header class="sec-head">
+          <svg class="ornamento" aria-hidden="true"><use href="#orn" /></svg>
+          <p class="kicker">Ano todo tem motivo</p>
+          <h2>Próximas coleções</h2>
+          <p>Cada data especial ganha uma coleção nova. Toque em “Me avise” e saiba antes de todo mundo quando abrirmos as encomendas.</p>
+        </header>
+        <div class="cal" id="cal"></div>
       </div>
     </section>
 
@@ -142,39 +230,41 @@
           <p class="kicker">Dúvidas</p>
           <h2>Perguntas frequentes</h2>
         </header>
-        <details><summary>Com quanta antecedência preciso encomendar?</summary><p>Para as coleções de datas comemorativas, respeite o prazo indicado na coleção. Para personalizados, peça com pelo menos 7 dias de antecedência. Nossa produção é artesanal e limitada.</p></details>
-        <details><summary>Quanto tempo os biscoitos duram?</summary><p>Fechados na embalagem original, em local fresco e seco, duram cerca de 20 dias. Não precisam de geladeira (a umidade amolece o biscoito).</p></details>
-        <details><summary>Vocês entregam?</summary><p>Sim! Combinamos entrega ou retirada na hora de confirmar o pedido. A taxa de entrega depende do bairro.</p></details>
-        <details><summary>Quais as formas de pagamento?</summary><p>Pix (preferencial) ou transferência. O pedido é reservado após o pagamento de 50% do valor, e o restante é pago na entrega.</p></details>
-        <details><summary>E alergias e restrições?</summary><p>Nossos biscoitos contêm trigo, ovos, leite e derivados, e podem conter traços de castanhas. Ainda não temos versão sem glúten ou vegana.</p></details>
-        <details><summary>Dá para colocar nome ou logotipo?</summary><p>Dá sim! Fazemos tags personalizadas e biscoitos com nome, iniciais ou a marca da sua empresa. Peça um orçamento pelo WhatsApp.</p></details>
+        <details><summary>Até quando posso encomendar?</summary><p>As caixas e os saquinhos de Natal podem ser encomendados até 15 de dezembro, para entrega até 23 de dezembro. O calendário do Advento precisa ser pedido até 20 de novembro, porque é entregue no fim de novembro para começar em 1º de dezembro.</p></details>
+        <details><summary>Quanto tempo os biscoitos duram?</summary><p>Depende do sabor: os secos, como o sonho de canela, o biscoito de especiarias e o Amanteigado da Moça, duram de 4 a 6 semanas; os recheados de Nutella e doce de leite, de 10 a 14 dias. Guarde em local fresco, longe do sol e fora da geladeira.</p></details>
+        <details><summary>Por que cada biscoito vem embalado separado?</summary><p>Para manter a crocância e para que os aromas não se misturem: cravo e canela, por exemplo, passariam para os biscoitos de baunilha. Cada caixa também leva um sachê próprio para alimentos que segura a umidade.</p></details>
+        <details><summary>Vocês entregam? E o calor de dezembro?</summary><p>Combinamos entrega ou retirada na hora de confirmar o pedido. A taxa depende do bairro. Em dezembro, não deixe a caixa no carro nem ao sol: os recheios e os açúcares não gostam de calor.</p></details>
+        <details><summary>Quais as formas de pagamento?</summary><p>Pix (preferencial) ou transferência. O pedido é reservado com 50% do valor, e o restante é pago na entrega.</p></details>
+        <details><summary>E alergias e restrições?</summary><p>Nossos biscoitos contêm trigo, ovos, leite e derivados. Vários sabores levam amêndoa, castanha-do-pará, avelã, pistache ou coco, e todos são feitos na mesma cozinha. Ainda não temos versão sem glúten ou vegana.</p></details>
       </div>
     </section>
 
     <!-- CONTATO -->
     <section class="contato" id="contato">
-      <div class="wrap contato__in">
+      <div class="wrap">
+        <svg class="ornamento" aria-hidden="true"><use href="#orn" /></svg>
         <h2>Bateu vontade?</h2>
         <p>Fale com a gente. Respondemos rapidinho!</p>
         <div class="contato__btns">
-          <a class="btn btn--zap" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#">💬 WhatsApp</a>
-          <a class="btn btn--linha-claro" data-mail="Encomenda pelo site" href="#">✉️ <span data-email></span></a>
+          <a class="btn btn--zap" data-zap="Olá! Vim pelo site e quero encomendar biscoitos de Natal 🎄" href="#">WhatsApp</a>
+          <a class="btn btn--linha-claro" data-mail="Encomenda pelo site" href="#"><span data-email></span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="rodape">
-    <div class="wrap rodape__in">
-      <p><strong>Delícias da Moça</strong> · Biscoitos artesanais · <span data-cidade></span></p>
+    <div class="wrap">
+      <p><strong>Delícias da Moça</strong></p>
+      <p>Biscoitos artesanais · <span data-cidade></span></p>
       <p><a data-insta href="#" hidden>Instagram</a></p>
-      <p class="rodape__mini">© <span data-ano></span> Delícias da Moça. Feito com manteiga e amor.</p>
+      <p class="rodape__mini">© <span data-ano></span> Delícias da Moça. Feito com manteiga e carinho.</p>
     </div>
   </footer>
 
-  <!-- Sacola flutuante -->
+  <!-- Sacola -->
   <button class="sacola-btn" id="sacolaBtn" aria-controls="sacola" aria-expanded="false" hidden>
-    🛍️ <span>Meu pedido</span> <b id="sacolaQtd">0</b>
+    <span>Meu pedido</span> <b id="sacolaQtd">0</b>
   </button>
   <aside class="sacola" id="sacola" aria-label="Seu pedido" hidden>
     <div class="sacola__head">
@@ -188,7 +278,7 @@
     <label class="campo">Entrega ou retirada?
       <select id="pEntrega"><option>Entrega</option><option>Retirada</option></select>
     </label>
-    <label class="campo">Observações<textarea id="pObs" rows="2" placeholder="Bairro, nome na tag, cores…"></textarea></label>
+    <label class="campo">Observações<textarea id="pObs" rows="2" placeholder="Sabor do saquinho, nome na tag, bairro…"></textarea></label>
     <div class="sacola__acoes">
       <button class="btn btn--zap" id="enviarZap">Enviar pelo WhatsApp</button>
       <button class="btn btn--linha" id="enviarMail">Enviar por e-mail</button>
@@ -196,11 +286,11 @@
     <p class="sacola__nota">O valor final e a disponibilidade são confirmados na conversa. Nada é cobrado aqui no site.</p>
   </aside>
 
-  <a class="zap-flutuante" data-zap="Olá! Vim pelo site e quero fazer uma encomenda 🍪" href="#" aria-label="Conversar no WhatsApp">
+  <a class="zap-flutuante" data-zap="Olá! Vim pelo site e quero encomendar biscoitos de Natal 🎄" href="#" aria-label="Conversar no WhatsApp">
     <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.2-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1 1 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5l-.6-.4z"/></svg>
   </a>
 
-  <script src="assets/js/config.js?v=8"></script>
-  <script src="assets/js/main.js?v=1"></script>
+  <script src="assets/js/config.js?v=11"></script>
+  <script src="assets/js/main.js?v=11"></script>
 </body>
 </html>

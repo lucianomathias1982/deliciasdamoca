@@ -1,18 +1,19 @@
 (function () {
   "use strict";
   const C = window.CONFIG;
+  const col = C.colecao;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
   const parseData = (iso) => { const [a, m, d] = iso.split("-").map(Number); return new Date(a, m - 1, d); };
   const fmtData = (d, opts = { day: "2-digit", month: "long" }) => d.toLocaleDateString("pt-BR", opts);
+  const sabor = (id) => col.sabores.find((s) => s.id === id);
 
   /* ---------- Links de WhatsApp e e-mail ---------- */
   const linkZap = (msg) => `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(msg)}`;
   const linkMail = (assunto, corpo = "") =>
     `mailto:${C.email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-
   function ligarContatos(raiz = document) {
     $$("[data-zap]", raiz).forEach((a) => {
       a.href = linkZap(a.dataset.zap);
@@ -33,70 +34,136 @@
     a.rel = "noopener";
   }
 
+  /* ---------- Faixa de aviso ---------- */
+  if (C.aviso && hoje <= parseData(C.aviso.ate)) {
+    $("#aviso").hidden = false;
+    $("[data-aviso-texto]").textContent = C.aviso.texto;
+    const a = $("[data-aviso-link]");
+    a.textContent = C.aviso.link;
+    a.dataset.zap = C.aviso.zap;
+  }
+
   /* ---------- Imagens com plano B (emoji) ---------- */
-  function imagemOuEmoji(img, emoji, classeExtra = "") {
-    img.addEventListener("error", () => {
+  function imagemOuEmoji(img, emoji) {
+    const trocar = () => {
       const ph = document.createElement("div");
-      ph.className = `ph ${classeExtra}`.trim();
+      ph.className = "ph";
       ph.setAttribute("role", "img");
       ph.setAttribute("aria-label", img.alt);
       ph.textContent = emoji;
       img.replaceWith(ph);
-    }, { once: true });
+    };
+    img.addEventListener("error", trocar, { once: true });
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) trocar();
   }
-  $$("img[data-fallback]").forEach((img) => {
-    imagemOuEmoji(img, img.dataset.fallback);
-    if (img.complete && img.naturalWidth === 0) img.dispatchEvent(new Event("error"));
+  $$("img[data-fallback]").forEach((img) => imagemOuEmoji(img, img.dataset.fallback));
+
+  /* ---------- Textos e prazos da coleção ---------- */
+  $$("[data-colecao-titulo]").forEach((el) => (el.textContent = col.titulo));
+  $$("[data-colecao-chamada]").forEach((el) => (el.textContent = col.chamada));
+  $$("[data-colecao-texto]").forEach((el) => (el.textContent = col.texto));
+
+  function textoPrazo(isoLimite, rotulo) {
+    const limite = parseData(isoLimite);
+    const dias = Math.round((limite - hoje) / 864e5);
+    if (dias < 0) return { encerrado: true, texto: `Encomendas ${rotulo} encerradas.` };
+    if (dias === 0) return { encerrado: false, texto: `Último dia para encomendar ${rotulo}!` };
+    return { encerrado: false, texto: `Encomendas ${rotulo} até ${fmtData(limite)}` };
+  }
+  const prazoCol = textoPrazo(col.encomendasAte, "de Natal");
+  $$("[data-prazo]").forEach((el) => (el.textContent = prazoCol.texto));
+  const adv = col.advento;
+  const prazoAdv = textoPrazo(adv.encomendasAte, "do calendário");
+
+  /* ---------- Sabores ---------- */
+  const grade = $("#saboresGrade");
+  col.sabores.forEach((s) => {
+    const el = document.createElement("article");
+    el.className = "sabor moldura";
+    el.innerHTML = `
+      <div class="sabor__img"><img src="${s.img}" alt="${s.nome}" loading="lazy" width="300" height="300"></div>
+      <p class="sabor__origem">${s.origem}</p>
+      <h3>${s.nome}</h3>
+      <p>${s.descricao}</p>`;
+    imagemOuEmoji($("img", el), s.emoji);
+    grade.appendChild(el);
   });
 
-  /* ---------- Coleção da vez ---------- */
-  const col = C.colecao;
-  $("[data-colecao-titulo]").textContent = col.titulo;
-  $("[data-colecao-chamada]").textContent = col.chamada;
-  $("[data-colecao-texto]").textContent = col.texto;
-
-  const limite = parseData(col.encomendasAte);
-  const encerrada = hoje > limite;
-  const diasRestantes = Math.round((limite - hoje) / 864e5);
-  $$("[data-prazo]").forEach((el) => {
-    if (encerrada) el.textContent = "Encomendas desta coleção encerradas. Veja as próximas abaixo!";
-    else if (diasRestantes === 0) el.textContent = "⏰ Último dia para encomendar!";
-    else el.textContent = `⏰ Encomendas até ${fmtData(limite)}. Faltam ${diasRestantes} dia${diasRestantes > 1 ? "s" : ""}!`;
-  });
-
+  /* ---------- Produtos (caixas, advento, saquinhos) ---------- */
+  const produtos = [...col.caixas, adv, ...col.saquinhos];
+  const prod = (id) => produtos.find((p) => p.id === id);
   const pedido = new Map(); // id -> qtd
-  const grade = $("#produtos");
-  col.produtos.forEach((p) => {
-    const card = document.createElement("article");
-    card.className = "produto";
-    card.dataset.id = p.id;
-    const preco = col.mostrarPrecos && p.preco
-      ? `<div class="produto__preco"><b>${brl(p.preco)}</b><span>/ ${p.unidade}</span></div>`
-      : `<div class="produto__preco"><span>${p.unidade}</span></div>`;
-    card.innerHTML = `
-      ${p.destaque ? '<span class="produto__tag">Mais pedido</span>' : ""}
-      <img class="produto__img" src="${p.img}" alt="${p.nome}" loading="lazy" width="600" height="600">
+
+  function controles(p, encerrado) {
+    return `
+      <div class="qtd" data-produto="${p.id}">
+        <button type="button" data-acao="menos" aria-label="Diminuir ${p.nome}" ${encerrado ? "disabled" : ""}>−</button>
+        <output aria-live="polite">0</output>
+        <button type="button" data-acao="mais" aria-label="Aumentar ${p.nome}" ${encerrado ? "disabled" : ""}>+</button>
+        <button type="button" class="btn btn--sm btn--terracota" data-acao="add" ${encerrado ? "disabled" : ""}>Adicionar</button>
+      </div>`;
+  }
+  function cartao(p) {
+    const el = document.createElement("article");
+    el.className = "produto moldura";
+    el.dataset.id = p.id;
+    const chips = (p.sabores || []).map((id) => `<li>${sabor(id).nome}</li>`).join("");
+    el.innerHTML = `
+      ${p.destaque ? `<span class="produto__tag">${p.destaque}</span>` : ""}
+      <div class="produto__img"><img src="${p.img}" alt="${p.nome}" loading="lazy" width="640" height="480"></div>
       <div class="produto__corpo">
         <h3>${p.nome}</h3>
+        <p class="produto__qtd">${p.qtd}</p>
         <p>${p.descricao}</p>
-        ${preco}
-        <div class="qtd">
-          <button type="button" data-acao="menos" aria-label="Diminuir ${p.nome}">−</button>
-          <output aria-live="polite">0</output>
-          <button type="button" data-acao="mais" aria-label="Aumentar ${p.nome}">+</button>
-          <button type="button" class="btn btn--sm btn--laranja" data-acao="add">Adicionar</button>
-        </div>
+        ${chips ? `<ul class="produto__sabores">${chips}</ul>` : ""}
+        ${col.mostrarPrecos && p.preco ? `<p class="produto__preco">${brl(p.preco)}${p.minimo ? ` <small>cada · mín. ${p.minimo}</small>` : ""}</p>` : ""}
+        ${controles(p, prazoCol.encerrado)}
       </div>`;
-    imagemOuEmoji($("img", card), p.emoji);
-    if (encerrada) $$(".qtd button", card).forEach((b) => (b.disabled = true));
-    grade.appendChild(card);
-  });
+    imagemOuEmoji($("img", el), p.emoji);
+    return el;
+  }
+  col.caixas.forEach((p) => $("#caixasGrade").appendChild(cartao(p)));
+  col.saquinhos.forEach((p) => $("#saquinhosGrade").appendChild(cartao(p)));
 
-  grade.addEventListener("click", (e) => {
-    const btn = e.target.closest("button[data-acao]");
+  /* ---------- Calendário do Advento ---------- */
+  $("[data-advento-nome]").textContent = adv.nome;
+  $("[data-advento-desc]").textContent = adv.descricao;
+  $("[data-advento-qtd]").textContent = adv.qtd;
+  $("[data-advento-entrega]").textContent = `Entregue ${adv.entrega}`;
+  $("[data-advento-sabores]").textContent = `${new Set(Object.values(adv.dias).map((d) => d[0])).size} sabores, escolhidos pelas festas do mês`;
+  $("[data-advento-preco]").textContent = col.mostrarPrecos ? brl(adv.preco) : "";
+  $("[data-advento-prazo]").textContent = prazoAdv.texto;
+  const advImg = $("[data-advento-img]");
+  advImg.src = adv.img;
+  imagemOuEmoji(advImg, adv.emoji);
+  if (prazoAdv.encerrado) $$("#advento .qtd button").forEach((b) => (b.disabled = true));
+
+  const advGrade = $("#adventoGrade"), dica = $("#adventoDica");
+  const diaHoje = hoje.getMonth() === 11 && hoje.getDate() <= 24 ? hoje.getDate() : 0;
+  for (let d = 1; d <= 24; d++) {
+    const [sid, nota] = adv.dias[d];
+    const s = sabor(sid);
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "listitem");
+    b.textContent = d;
+    b.title = `Dia ${d}: ${s.nome}${nota ? ` (${nota})` : ""}`;
+    b.setAttribute("aria-label", b.title);
+    if (nota) b.classList.add("festa");
+    if (d === diaHoje) b.classList.add("hoje");
+    b.addEventListener("click", () => {
+      $$("button", advGrade).forEach((x) => x.classList.remove("ativo"));
+      b.classList.add("ativo");
+      dica.innerHTML = `<b>Dia ${d}</b>${nota ? `<span>${nota}</span>` : ""}${s.nome}`;
+    });
+    advGrade.appendChild(b);
+  }
+
+  /* ---------- Quantidades ---------- */
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".qtd button[data-acao]");
     if (!btn) return;
-    const card = btn.closest(".produto");
-    const p = col.produtos.find((x) => x.id === card.dataset.id);
+    const p = prod(btn.closest(".qtd").dataset.produto);
     const min = p.minimo || 1;
     let q = pedido.get(p.id) || 0;
     if (btn.dataset.acao === "mais") q = q === 0 ? min : q + 1;
@@ -110,23 +177,22 @@
   /* ---------- Sacola / pedido ---------- */
   const sacola = $("#sacola"), sacolaBtn = $("#sacolaBtn");
   let fundo;
+  const itensPedido = () => [...pedido].map(([id, q]) => ({ p: prod(id), q }));
 
-  function itensPedido() {
-    return [...pedido].map(([id, q]) => ({ p: col.produtos.find((x) => x.id === id), q }));
-  }
   function atualizar() {
-    $$(".produto").forEach((card) => {
-      const q = pedido.get(card.dataset.id) || 0;
-      $("output", card).textContent = q;
-      card.classList.toggle("no-pedido", q > 0);
+    $$(".qtd[data-produto]").forEach((box) => {
+      const q = pedido.get(box.dataset.produto) || 0;
+      $("output", box).textContent = q;
+      const card = box.closest(".produto");
+      if (card) card.classList.toggle("no-pedido", q > 0);
     });
     const itens = itensPedido();
     const totalQtd = itens.reduce((s, i) => s + i.q, 0);
     sacolaBtn.hidden = totalQtd === 0;
     $("#sacolaQtd").textContent = totalQtd;
     $("#sacolaItens").innerHTML = itens.length
-      ? itens.map(({ p, q }) => `<li><span>${q}× ${p.nome}<small>${p.unidade}</small></span>${col.mostrarPrecos ? `<b>${brl(p.preco * q)}</b>` : ""}</li>`).join("")
-      : "<li>Seu pedido está vazio. Escolha seus biscoitos!</li>";
+      ? itens.map(({ p, q }) => `<li><span>${q}× ${p.nome}<small>${p.qtd}</small></span>${col.mostrarPrecos ? `<b>${brl(p.preco * q)}</b>` : ""}</li>`).join("")
+      : "<li>Seu pedido está vazio.</li>";
     const total = itens.reduce((s, i) => s + (i.p.preco || 0) * i.q, 0);
     $("#sacolaTotal").textContent = col.mostrarPrecos && total ? `Total estimado: ${brl(total)}` : "";
     if (!totalQtd && !sacola.hidden) fecharSacola();
@@ -154,9 +220,9 @@
     const data = $("#pData").value;
     const obs = $("#pObs").value.trim();
     const linhas = [
-      `Olá! Quero encomendar da *${col.titulo}* 🍪`,
+      `Olá! Quero encomendar da *${col.titulo}* 🎄`,
       "",
-      ...itensPedido().map(({ p, q }) => `• ${q}× ${p.nome} (${p.unidade})${col.mostrarPrecos ? ` — ${brl(p.preco * q)}` : ""}`),
+      ...itensPedido().map(({ p, q }) => `• ${q}× ${p.nome} (${p.qtd})${col.mostrarPrecos ? ` — ${brl(p.preco * q)}` : ""}`),
     ];
     const total = itensPedido().reduce((s, i) => s + (i.p.preco || 0) * i.q, 0);
     if (col.mostrarPrecos && total) linhas.push("", `Total estimado: ${brl(total)}`);
@@ -173,7 +239,7 @@
   });
   const pData = $("#pData");
   pData.min = hoje.toISOString().slice(0, 10);
-  if (!encerrada) pData.max = col.entregaAte;
+  pData.max = col.entregaAte;
 
   /* ---------- Calendário de coleções ---------- */
   function pascoa(ano) { // algoritmo de Meeus/Jones/Butcher
@@ -203,24 +269,21 @@
     const d = dataNoAno(regra, hoje.getFullYear());
     return d >= hoje ? d : dataNoAno(regra, hoje.getFullYear() + 1);
   };
-
   const cal = $("#cal");
   C.calendario
     .map((ev) => ({ ...ev, data: proxima(ev.regra) }))
     .sort((x, y) => x.data - y.data)
     .forEach((ev) => {
-      const agora = ev.id === col.id && !encerrada;
+      const agora = ev.id === col.id && !prazoCol.encerrado;
       const item = document.createElement("article");
       item.className = "cal__item" + (agora ? " cal__item--agora" : "");
-      const msg = agora
-        ? `Olá! Quero encomendar da ${col.titulo} 🍪`
-        : `Olá! Quero ser avisado(a) quando abrirem as encomendas de ${ev.nome} 🍪`;
+      const msg = `Olá! Quero ser avisado(a) quando abrirem as encomendas de ${ev.nome} 🍪`;
       item.innerHTML = `
-        ${ev.img ? `<img class="cal__img" src="${ev.img}" alt="Biscoitos decorados de ${ev.nome}" loading="lazy" width="400" height="300">` : `<div class="ph" aria-hidden="true">${ev.emoji}</div>`}
+        ${ev.img ? `<img class="cal__img" src="${ev.img}" alt="Biscoitos de ${ev.nome}" loading="lazy" width="400" height="300">` : `<div class="ph" aria-hidden="true">${ev.emoji}</div>`}
         <div class="cal__corpo">
           <span class="cal__data">${agora ? "Encomendas abertas" : fmtData(ev.data, { day: "2-digit", month: "short", year: "numeric" }).replace(" de ", " ").replace(".", "")}</span>
-          <span class="cal__nome">${ev.emoji} ${ev.nome}</span>
-          ${agora ? `<a class="cal__btn" href="#colecao">Ver coleção</a>` : `<a class="cal__btn" data-zap="${msg}" href="#">Me avise</a>`}
+          <span class="cal__nome">${ev.nome}</span>
+          ${agora ? `<a class="cal__btn" href="#caixas">Ver coleção</a>` : `<a class="cal__btn" data-zap="${msg}" href="#">Me avise</a>`}
         </div>`;
       const img = $("img", item);
       if (img) imagemOuEmoji(img, ev.emoji);
