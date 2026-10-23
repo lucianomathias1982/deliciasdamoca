@@ -156,6 +156,26 @@
 
   const advGrade = $("#adventoGrade"), dica = $("#adventoDica");
   const diaHoje = hoje.getMonth() === 11 && hoje.getDate() <= 24 ? hoje.getDate() : 0;
+  const botoesDia = [];
+
+  // Mostra um dia: destaca o botão, troca o texto e a foto juntos (sempre sincronizados)
+  function mostrarDia(d) {
+    const [sid, nota] = adv.dias[d];
+    const s = sabor(sid);
+    botoesDia.forEach((x, i) => x.classList.toggle("ativo", i + 1 === d));
+    dica.innerHTML = `<b>Dia ${d}</b>${nota ? `<span>${nota}</span>` : ""}${s.nome}`;
+    const nova = fotoDia(d, s);
+    if (advImg.getAttribute("src") === nova) return;
+    advImg.classList.add("trocando");
+    const pre = new Image();
+    pre.onload = pre.onerror = () => {
+      advImg.src = nova;
+      advImg.alt = `${s.nome}, o biscoito do dia ${d}`;
+      requestAnimationFrame(() => advImg.classList.remove("trocando"));
+    };
+    pre.src = nova;
+  }
+
   for (let d = 1; d <= 24; d++) {
     const [sid, nota] = adv.dias[d];
     const s = sabor(sid);
@@ -168,15 +188,11 @@
     if (nota) b.classList.add("festa");
     if (d === diaHoje) b.classList.add("hoje");
     new Image().src = fotoDia(d, s); // pré-carrega para a troca ser instantânea
-    b.addEventListener("click", () => {
-      $$("button", advGrade).forEach((x) => x.classList.remove("ativo"));
-      b.classList.add("ativo");
-      dica.innerHTML = `<b>Dia ${d}</b>${nota ? `<span>${nota}</span>` : ""}${s.nome}`;
-      advImg.src = fotoDia(d, s);
-      advImg.alt = `${s.nome}, o biscoito do dia ${d}`;
-    });
+    b.addEventListener("click", () => mostrarDia(d));
+    botoesDia.push(b);
     advGrade.appendChild(b);
   }
+  mostrarDia(diaHoje || 1); // já abre com um dia escolhido: nome e foto sempre combinando
 
   /* ---------- Quantidades ---------- */
   document.addEventListener("click", (e) => {

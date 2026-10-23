@@ -457,3 +457,7 @@ details p { color: var(--texto-suave); padding-bottom: 8px; }
   background: var(--papel); color: var(--verde); border: 1px solid var(--ouro);
   font-family: var(--f-deco); letter-spacing: .18em; text-transform: uppercase; font-size: .72rem;
 }
+.advento__img img { transition: opacity .25s ease; }
+.advento__img img.trocando { opacity: 0; }
+.advento__instrucao { margin: 16px 0 0; text-align: center; font-size: .85rem; color: #d9bfbb; }
+.advento__instrucao + .advento__dica { margin-top: 6px; }
