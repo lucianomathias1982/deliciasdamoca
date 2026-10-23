@@ -426,3 +426,14 @@ details p { color: var(--texto-suave); padding-bottom: 8px; }
   html { scroll-behavior: auto; }
   .btn { transition: none; }
 }
+
+/* ---------- Aviso de imagens ilustrativas ---------- */
+.nota-img { position: relative; text-align: center; font-size: .84rem; color: var(--texto-suave); margin: 26px auto 0; max-width: 620px; }
+.nota-img b { font-weight: 500; color: var(--cafe); }
+.nota-img--claro { margin-top: 14px; color: #ead6d3; }
+.nota-img--claro b { color: var(--ouro-claro); font-weight: 400; }
+.selo-ilustrativa {
+  position: absolute; bottom: 36px; left: 12px;
+  background: rgba(23, 48, 42, .78); color: var(--papel);
+  font-size: .68rem; letter-spacing: .08em; padding: .35em .8em; border-radius: 2px;
+}
