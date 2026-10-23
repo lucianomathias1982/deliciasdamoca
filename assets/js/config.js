@@ -35,11 +35,12 @@ window.CONFIG = {
     mostrarPrecos: true,
 
     // Os sabores da linha (ficha de teste de Natal 2026)
+    // disponivel: true → mostra a tag "Disponível para encomendas" e o sabor aparece primeiro
     sabores: [
-      { id: "principal", nome: "Amanteigado da Moça", origem: "O biscoito da casa", descricao: "Massa amanteigada de baunilha e amêndoa que desmancha na boca, coberta de açúcar de baunilha. Feito em estrela, árvore, sino, anjo, coração e outros formatos.", img: "assets/img/natal/principal.jpg", emoji: "⭐" },
+      { id: "principal", disponivel: true, nome: "Amanteigado da Moça", origem: "O biscoito da casa", descricao: "Massa amanteigada de baunilha e amêndoa que desmancha na boca, coberta de açúcar de baunilha. Feito em estrela, árvore, sino, anjo, coração e outros formatos.", img: "assets/img/natal/principal.jpg", emoji: "⭐" },
       { id: "laranja", nome: "Amanteigado de laranja", origem: "Só no Advento", descricao: "A massa da casa com raspas de laranja, em meia-lua. Aparece no dia 8, festa da Imaculada Conceição.", img: "assets/img/natal/laranja.jpg", emoji: "🌙" },
-      { id: "castanha", nome: "Nevadinha de castanha-do-pará", origem: "Amanteigados", descricao: "Bolinha amanteigada de castanha-do-pará tostada, coberta de açúcar duas vezes, como neve.", img: "assets/img/natal/castanha.jpg", emoji: "🌰" },
-      { id: "especiarias", nome: "Biscoito de especiarias", origem: "Especiarias", descricao: "Cravo, canela, noz-moscada e gengibre, no molde de madeira ou em bonequinhos com olhos e botões de glacê.", img: "assets/img/natal/especiarias.jpg", emoji: "🎄" },
+      { id: "castanha", disponivel: true, nome: "Nevadinha de castanha-do-pará", origem: "Amanteigados", descricao: "Bolinha amanteigada de castanha-do-pará tostada, coberta de açúcar duas vezes, como neve.", img: "assets/img/natal/castanha.jpg", emoji: "🌰" },
+      { id: "especiarias", disponivel: true, nome: "Biscoito de especiarias", origem: "Especiarias", descricao: "Cravo, canela, noz-moscada e gengibre, no molde de madeira ou em bonequinhos com olhos e botões de glacê.", img: "assets/img/natal/especiarias.jpg", emoji: "🎄" },
       { id: "pao-de-mel", nome: "Pão de mel de cacau, café e cardamomo", origem: "Especiarias", descricao: "Massa de mel macia e escura, com cardamomo moído na hora e uma camada fina de glacê de cacau.", img: "assets/img/natal/pao-de-mel.jpg", emoji: "🍯" },
       { id: "sonho-canela", nome: "Sonho de canela", origem: "Especiarias", descricao: "Leve, rachado e sequinho, com canela, cardamomo e açúcar em pérolas. É o que mais dura da coleção.", img: "assets/img/natal/sonho-canela.jpg", emoji: "✨" },
       { id: "xadrez", nome: "Xadrez de matcha e morango", origem: "Amanteigados", descricao: "Quadradinhos de massa de baunilha em verde e rosa, coloridos só com matcha e morango.", img: "assets/img/natal/xadrez.jpg", emoji: "🟩" },
