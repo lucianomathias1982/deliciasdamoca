@@ -58,8 +58,8 @@ window.CONFIG = {
     caixas: [
       {
         id: "caixa-tradicao", nome: "Caixa Tradição", qtd: "8 biscoitos", preco: 54,
-        descricao: "Os amanteigados e as especiarias, para quem ama o Natal de antigamente.",
-        sabores: ["principal", "castanha", "especiarias", "sonho-canela"],
+        descricao: "Para quem ama o Natal de antigamente: 4 Amanteigados da Moça em formatos de Natal, 2 Nevadinhas de castanha-do-pará e 2 biscoitos de especiarias.",
+        sabores: ["principal", "castanha", "especiarias"],
         img: "assets/img/natal/caixa-tradicao.jpg", emoji: "📦",
       },
       {
@@ -83,6 +83,8 @@ window.CONFIG = {
       encomendasAte: "2026-11-20",
       entrega: "entre 25 e 30 de novembro",
       img: "assets/img/natal/advento.jpg", emoji: "📅",
+      // foto específica do dia (a meia-lua só existe no Advento); nos outros dias usa a foto do sabor
+      imgDia: { 8: "assets/img/natal/laranja.jpg", 24: "assets/img/natal/advento.jpg" },
       dias: {
         1: ["pistache", "1ª semana do Advento"], 2: ["craquelado"], 3: ["xadrez", "São Francisco Xavier"], 4: ["espiral"],
         5: ["doce-de-leite"], 6: ["especiarias", "2º Domingo do Advento · São Nicolau"], 7: ["pao-de-mel", "Santo Ambrósio, padroeiro dos apicultores"],

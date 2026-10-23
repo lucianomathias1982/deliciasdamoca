@@ -146,9 +146,10 @@
   $("[data-advento-prazo]").textContent = prazoAdv.texto;
   const advImg = $("[data-advento-img]");
   advImg.src = adv.img;
-  imagemOuEmoji(advImg, adv.emoji);
+  const fotoDia = (d, s) => (adv.imgDia && adv.imgDia[d]) || s.img;
   if (prazoAdv.encerrado) $$("#advento .qtd button").forEach((b) => (b.disabled = true));
   if (!disponivel(adv)) {
+    $("[data-advento-nome]").insertAdjacentHTML("beforebegin", '<span class="advento__tag">Em breve</span>');
     $("[data-advento-prazo]").innerHTML = `<span class="advento__breve">Em breve</span> Avisamos quando abrirem as encomendas do calendário.`;
     $("#advento .qtd").outerHTML = meAvise(adv);
   }
@@ -166,10 +167,13 @@
     b.setAttribute("aria-label", b.title);
     if (nota) b.classList.add("festa");
     if (d === diaHoje) b.classList.add("hoje");
+    new Image().src = fotoDia(d, s); // pré-carrega para a troca ser instantânea
     b.addEventListener("click", () => {
       $$("button", advGrade).forEach((x) => x.classList.remove("ativo"));
       b.classList.add("ativo");
       dica.innerHTML = `<b>Dia ${d}</b>${nota ? `<span>${nota}</span>` : ""}${s.nome}`;
+      advImg.src = fotoDia(d, s);
+      advImg.alt = `${s.nome}, o biscoito do dia ${d}`;
     });
     advGrade.appendChild(b);
   }

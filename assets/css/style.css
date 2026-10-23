@@ -452,3 +452,8 @@ details p { color: var(--texto-suave); padding-bottom: 8px; }
 }
 .advento .btn--linha { border-color: var(--ouro-claro); color: var(--papel); }
 .advento .btn--linha:hover { background: var(--papel); color: var(--bordo-esc); }
+.advento__tag {
+  display: table; margin: 0 0 14px; padding: .55em 1.2em;
+  background: var(--papel); color: var(--verde); border: 1px solid var(--ouro);
+  font-family: var(--f-deco); letter-spacing: .18em; text-transform: uppercase; font-size: .72rem;
+}
