@@ -84,7 +84,13 @@ window.CONFIG = {
       entrega: "entre 25 e 30 de novembro",
       img: "assets/img/natal/principal.jpg", emoji: "📅",
       // foto específica do dia (a meia-lua só existe no Advento); nos outros dias usa a foto do sabor
-      imgDia: { 8: "assets/img/natal/laranja.jpg" },
+      imgDia: {
+        7: "assets/img/natal/dias/dia-07-colmeia.jpg", 8: "assets/img/natal/laranja.jpg",
+        10: "assets/img/natal/dias/dia-10-cajado.jpg", 12: "assets/img/natal/dias/dia-12-rosa.jpg",
+        14: "assets/img/natal/dias/dia-14-estrela.jpg", 18: "assets/img/natal/dias/dia-18-chama.jpg",
+        20: "assets/img/natal/dias/dia-20-chave.jpg", 22: "assets/img/natal/dias/dia-22-coroa.jpg",
+        24: "assets/img/natal/dias/dia-24-estrela.jpg",
+      },
       // Roteiro do Advento 2026: tema, reflexão, ação para a família e o biscoito do dia
       // tipo: "festa" (santos e festas de Maria) ou "antifona" (Antífonas do Ó, 17 a 23)
       dias: {
