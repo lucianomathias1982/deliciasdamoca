@@ -95,6 +95,13 @@
   const prod = (id) => produtos.find((p) => p.id === id);
   const pedido = new Map(); // id -> qtd
 
+  // Um produto fica disponível quando todos os seus sabores estão disponíveis
+  // (no saquinho de escolha livre, basta haver algum sabor disponível)
+  const saborOk = (id) => !!sabor(id).disponivel;
+  const saboresDe = (p) => (p.id === adv.id ? [...new Set(Object.values(adv.dias).map((d) => d[0]))] : p.sabores || []);
+  const disponivel = (p) => (p.escolha ? col.sabores.some((s) => s.disponivel) : saboresDe(p).every(saborOk));
+  const meAvise = (p) => `<a class="btn btn--sm btn--linha" data-zap="Olá! Quero ser avisado(a) quando abrirem as encomendas de: ${p.nome} 🎄" href="#">Me avise quando abrir</a>`;
+
   function controles(p, encerrado) {
     return `
       <div class="qtd" data-produto="${p.id}">
@@ -108,17 +115,20 @@
     const el = document.createElement("article");
     el.className = "produto moldura";
     el.dataset.id = p.id;
-    const chips = (p.sabores || []).map((id) => `<li>${sabor(id).nome}</li>`).join("");
+    const ok = disponivel(p);
+    el.classList.add(ok ? "produto--disponivel" : "produto--breve");
+    const chips = (p.escolha ? col.sabores.filter((s) => s.disponivel).map((s) => s.id) : p.sabores || [])
+      .map((id) => `<li class="${saborOk(id) ? "ok" : "breve"}">${sabor(id).nome}${saborOk(id) ? "" : " <small>em breve</small>"}</li>`).join("");
     el.innerHTML = `
-      ${p.destaque ? `<span class="produto__tag">${p.destaque}</span>` : ""}
+      <span class="produto__tag ${ok ? "" : "produto__tag--breve"}">${ok ? "Disponível para encomendas" : "Em breve"}</span>
       <div class="produto__img"><img src="${p.img}" alt="${p.nome}" loading="lazy" width="640" height="480"></div>
       <div class="produto__corpo">
         <h3>${p.nome}</h3>
-        <p class="produto__qtd">${p.qtd}</p>
+        <p class="produto__qtd">${p.qtd}${p.destaque ? ` · ${p.destaque}` : ""}</p>
         <p>${p.descricao}</p>
         ${chips ? `<ul class="produto__sabores">${chips}</ul>` : ""}
         ${col.mostrarPrecos && p.preco ? `<p class="produto__preco">${brl(p.preco)}${p.minimo ? ` <small>cada · mín. ${p.minimo}</small>` : ""}</p>` : ""}
-        ${controles(p, prazoCol.encerrado)}
+        ${ok ? controles(p, prazoCol.encerrado) : meAvise(p)}
       </div>`;
     imagemOuEmoji($("img", el), p.emoji);
     return el;
@@ -138,6 +148,10 @@
   advImg.src = adv.img;
   imagemOuEmoji(advImg, adv.emoji);
   if (prazoAdv.encerrado) $$("#advento .qtd button").forEach((b) => (b.disabled = true));
+  if (!disponivel(adv)) {
+    $("[data-advento-prazo]").innerHTML = `<span class="advento__breve">Em breve</span> Avisamos quando abrirem as encomendas do calendário.`;
+    $("#advento .qtd").outerHTML = meAvise(adv);
+  }
 
   const advGrade = $("#adventoGrade"), dica = $("#adventoDica");
   const diaHoje = hoje.getMonth() === 11 && hoje.getDate() <= 24 ? hoje.getDate() : 0;
