@@ -98,7 +98,7 @@
   // Um produto fica disponível quando todos os seus sabores estão disponíveis
   // (no saquinho de escolha livre, basta haver algum sabor disponível)
   const saborOk = (id) => !!sabor(id).disponivel;
-  const saboresDe = (p) => (p.id === adv.id ? [...new Set(Object.values(adv.dias).map((d) => d[0]))] : p.sabores || []);
+  const saboresDe = (p) => (p.id === adv.id ? [...new Set(Object.values(adv.dias).map((d) => d.sabor))] : p.sabores || []);
   const disponivel = (p) => (p.escolha ? col.sabores.some((s) => s.disponivel) : saboresDe(p).every(saborOk));
   const meAvise = (p) => `<a class="btn btn--sm btn--linha" data-zap="Olá! Quero ser avisado(a) quando abrirem as encomendas de: ${p.nome} 🎄" href="#">Me avise quando abrir</a>`;
 
@@ -141,7 +141,7 @@
   $("[data-advento-desc]").textContent = adv.descricao;
   $("[data-advento-qtd]").textContent = adv.qtd;
   $("[data-advento-entrega]").textContent = `Entregue ${adv.entrega}`;
-  $("[data-advento-sabores]").textContent = `${new Set(Object.values(adv.dias).map((d) => d[0])).size} sabores, escolhidos pelas festas do mês`;
+  $("[data-advento-sabores]").textContent = `${new Set(Object.values(adv.dias).map((d) => d.sabor)).size} sabores ao longo do mês`;
   $("[data-advento-preco]").textContent = col.mostrarPrecos ? brl(adv.preco) : "";
   $("[data-advento-prazo]").textContent = prazoAdv.texto;
   const advImg = $("[data-advento-img]");
@@ -160,10 +160,15 @@
 
   // Mostra um dia: destaca o botão, troca o texto e a foto juntos (sempre sincronizados)
   function mostrarDia(d) {
-    const [sid, nota] = adv.dias[d];
-    const s = sabor(sid);
+    const dia = adv.dias[d];
+    const s = sabor(dia.sabor);
     botoesDia.forEach((x, i) => x.classList.toggle("ativo", i + 1 === d));
-    dica.innerHTML = `<b>Dia ${d}</b>${nota ? `<span>${nota}</span>` : ""}${s.nome}`;
+    dica.innerHTML = `
+      <span class="roteiro__dia">Dia ${d}</span>
+      <strong class="roteiro__tema">${dia.tema}</strong>
+      <span class="roteiro__reflexao">${dia.reflexao}</span>
+      <span class="roteiro__acao"><b>Em família:</b> ${dia.acao}</span>
+      <span class="roteiro__biscoito"><b>${s.nome}</b> · ${dia.biscoito}</span>`;
     const nova = fotoDia(d, s);
     if (advImg.getAttribute("src") === nova) return;
     advImg.classList.add("trocando");
@@ -177,15 +182,15 @@
   }
 
   for (let d = 1; d <= 24; d++) {
-    const [sid, nota] = adv.dias[d];
-    const s = sabor(sid);
+    const dia = adv.dias[d];
+    const s = sabor(dia.sabor);
     const b = document.createElement("button");
     b.type = "button";
     b.setAttribute("role", "listitem");
     b.textContent = d;
-    b.title = `Dia ${d}: ${s.nome}${nota ? ` (${nota})` : ""}`;
+    b.title = `Dia ${d}: ${dia.tema} · ${s.nome}`;
     b.setAttribute("aria-label", b.title);
-    if (nota) b.classList.add("festa");
+    if (dia.tipo) b.classList.add(dia.tipo);
     if (d === diaHoje) b.classList.add("hoje");
     new Image().src = fotoDia(d, s); // pré-carrega para a troca ser instantânea
     b.addEventListener("click", () => mostrarDia(d));
