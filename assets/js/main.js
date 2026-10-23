@@ -79,9 +79,9 @@
   const grade = $("#saboresGrade");
   [...col.sabores].sort((a, b) => (b.disponivel ? 1 : 0) - (a.disponivel ? 1 : 0)).forEach((s) => {
     const el = document.createElement("article");
-    el.className = "sabor moldura" + (s.disponivel ? " sabor--disponivel" : "");
+    el.className = "sabor moldura " + (s.disponivel ? "sabor--disponivel" : "sabor--breve");
     el.innerHTML = `
-      ${s.disponivel ? '<span class="sabor__tag">Disponível para encomendas</span>' : ""}
+      ${s.disponivel ? '<span class="sabor__tag">Disponível para encomendas</span>' : '<span class="sabor__tag sabor__tag--breve">Em breve</span>'}
       <div class="sabor__img"><img src="${s.img}" alt="${s.nome}" loading="lazy" width="300" height="300"></div>
       <p class="sabor__origem">${s.origem}</p>
       <h3>${s.nome}</h3>
