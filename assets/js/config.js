@@ -60,19 +60,19 @@ window.CONFIG = {
         id: "caixa-tradicao", nome: "Caixa Tradição", qtd: "8 biscoitos", preco: 54,
         descricao: "Para quem ama o Natal de antigamente: 4 Amanteigados da Moça em formatos de Natal, 2 Nevadinhas de castanha-do-pará e 2 biscoitos de especiarias.",
         sabores: ["principal", "castanha", "especiarias"],
-        img: "assets/img/natal/caixa-tradicao.jpg", emoji: "📦",
+        img: "assets/img/natal/caixa-tradicao-2.jpg", emoji: "📦",
       },
       {
         id: "caixa-jardim", nome: "Caixa Jardim de Inverno", qtd: "12 biscoitos", preco: 89,
         descricao: "A caixa mais colorida da coleção, só com cores naturais.",
         sabores: ["xadrez", "espiral", "joia-goiabada", "janelinha", "pistache", "coco"],
-        img: "assets/img/natal/caixa-jardim.jpg", emoji: "🎁",
+        img: "assets/img/natal/caixa-jardim-2.jpg", emoji: "🎁",
       },
       {
         id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 169, destaque: "A mais completa",
         descricao: "Dois de cada um dos 12 sabores, incluindo o botão de avelã, que só vem nesta caixa.",
         sabores: ["principal", "castanha", "especiarias", "pao-de-mel", "sonho-canela", "xadrez", "janelinha", "pistache", "coco", "craquelado", "doce-de-leite", "botao-avela"],
-        img: "assets/img/natal/caixa-noite.jpg", emoji: "🎄",
+        img: "assets/img/natal/caixa-noite-2.jpg", emoji: "🎄",
       },
     ],
 
