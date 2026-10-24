@@ -123,9 +123,9 @@ window.CONFIG = {
 
     // Saquinhos menores
     saquinhos: [
-      { id: "saq-sabor", escolha: true, nome: "Saquinho de um sabor", qtd: "5 biscoitos do mesmo sabor", preco: 26, descricao: "Escolha um dos sabores disponíveis no campo de observações do pedido. É um ótimo mimo para professores, vizinhos e amigo-secreto.", img: "assets/img/natal/saq-sabor.jpg?v=2", emoji: "🛍️" },
-      { id: "saq-trio", nome: "Trio de Natal", qtd: "3 biscoitos", preco: 16, sabores: ["principal", "especiarias", "sonho-canela"], descricao: "Amanteigado da Moça, biscoito de especiarias e sonho de canela, cada um embalado separado, num envelope kraft com fita.", img: "assets/img/natal/saq-trio.jpg?v=2", emoji: "✉️" },
-      { id: "saq-arvore", nome: "Biscoito para a árvore", qtd: "1 biscoito com fita", preco: 7, minimo: 10, sabores: ["principal"], descricao: "Um Amanteigado da Moça em estrela ou árvore, em saquinho com fita bordô para pendurar ou marcar o lugar na ceia. Pedido mínimo de 10.", img: "assets/img/natal/saq-arvore.jpg?v=2", emoji: "🎀" },
+      { id: "saq-sabor", escolha: true, nome: "Saquinho de um sabor", qtd: "5 biscoitos do mesmo sabor", preco: 26, descricao: "Escolha um dos sabores disponíveis no campo de observações do pedido. É um ótimo mimo para professores, vizinhos e amigo-secreto.", img: "assets/img/natal/saq-sabor.jpg?v=3", emoji: "🛍️" },
+      { id: "saq-trio", nome: "Trio de Natal", qtd: "3 biscoitos", preco: 16, sabores: ["principal", "especiarias", "sonho-canela"], descricao: "Amanteigado da Moça, biscoito de especiarias e sonho de canela, numa bandejinha kraft dentro de saquinho com laço bordô.", img: "assets/img/natal/saq-trio.jpg?v=3", emoji: "✉️" },
+      { id: "saq-arvore", nome: "Biscoito para a árvore", qtd: "1 biscoito com fita", preco: 7, minimo: 10, sabores: ["principal"], descricao: "Um Amanteigado da Moça em estrela ou árvore, em saquinho com fita bordô para pendurar ou marcar o lugar na ceia. Pedido mínimo de 10.", img: "assets/img/natal/saq-arvore.jpg?v=3", emoji: "🎀" },
     ],
   },
 
