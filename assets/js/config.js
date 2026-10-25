@@ -16,12 +16,8 @@ window.CONFIG = {
   cidade: "São Paulo - SP", // TODO: cidade/região de entrega
 
   // Faixa no topo (some sozinha depois da data "ate")
-  aviso: {
-    texto: "🎃 Últimas encomendas de Halloween até 28/10.",
-    link: "Peça pelo WhatsApp",
-    zap: "Olá! Ainda dá para encomendar biscoitos de Halloween? 🎃",
-    ate: "2026-10-28",
-  },
+  // Para mostrar de novo, preencha { texto, link, zap, ate: "AAAA-MM-DD" }.
+  aviso: null,
 
   // Coleção em destaque
   colecao: {
