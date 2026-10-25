@@ -61,7 +61,7 @@ window.CONFIG = {
       {
         id: "caixa-jardim", nome: "Caixa Jardim de Inverno", qtd: "12 biscoitos", preco: 89,
         descricao: "A caixa mais colorida da coleção, só com cores naturais.",
-        sabores: ["xadrez", "espiral", "joia-goiabada", "janelinha", "pistache", "coco"],
+        sabores: ["xadrez", "espiral", "joia-goiabada", "principal", "pistache", "coco"],
         img: "assets/img/natal/caixa-jardim-2.jpg", emoji: "🎁",
       },
       {
