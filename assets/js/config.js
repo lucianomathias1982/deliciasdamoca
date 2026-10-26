@@ -42,7 +42,7 @@ window.CONFIG = {
       { id: "xadrez", nome: "Xadrez de matcha e framboesa", origem: "Amanteigados", descricao: "Quadradinhos de massa de baunilha em verde e rosa, coloridos só com matcha e framboesa.", img: "assets/img/natal/xadrez.jpg", emoji: "🟩" },
       { id: "espiral", nome: "Espiral de framboesa", origem: "Amanteigados", descricao: "Massa de baunilha enrolada com massa de framboesa, com borda de açúcar cristal.", img: "assets/img/natal/espiral.jpg", emoji: "🌀" },
       { id: "joia-goiabada", nome: "Joia de goiabada", origem: "Amanteigados", descricao: "Bolinha amanteigada com goiabada cascão assada no centro, firme e brilhante.", img: "assets/img/natal/joia-goiabada.jpg", emoji: "🍬" },
-      { id: "janelinha", nome: "Janelinha de damasco", origem: "Amanteigados", descricao: "Sanduíche amanteigado com uma janela recortada e recheio de geleia de damasco.", img: "assets/img/natal/janelinha.jpg", emoji: "⭐" },
+      { id: "janelinha", nome: "Janelinha de damasco", origem: "Amanteigados", descricao: "Sanduíche amanteigado com uma janela recortada e recheio de geleia de damasco.", img: "assets/img/natal/janelinha-2.jpg", emoji: "⭐" },
       { id: "pistache", nome: "Guirlanda de pistache", origem: "Amanteigados", descricao: "Guirlanda feita no bico de confeitar, com pasta de pistache, pistache picado e um laço de cranberry.", img: "assets/img/natal/pistache.jpg", emoji: "💚" },
       { id: "coco", nome: "Coroa de coco", origem: "Amanteigados", descricao: "Amanteigado de coco tostado e amêndoa, com borda de coco que doura no forno, como uma coroa de luz.", img: "assets/img/natal/coco.jpg", emoji: "🥥" },
       { id: "craquelado", nome: "Craquelado de chocolate com Nutella", origem: "Chocolate", descricao: "Chocolate rachado no açúcar de confeiteiro, com Nutella no centro.", img: "assets/img/natal/craquelado.jpg", emoji: "🍫" },
@@ -83,8 +83,8 @@ window.CONFIG = {
       imgDia: {
         7: "assets/img/natal/dias/dia-07-colmeia.jpg", 8: "assets/img/natal/laranja.jpg",
         10: "assets/img/natal/dias/dia-10-cajado.jpg", 12: "assets/img/natal/dias/dia-12-rosa.jpg",
-        14: "assets/img/natal/dias/dia-14-estrela.jpg", 18: "assets/img/natal/dias/dia-18-chama.jpg",
-        20: "assets/img/natal/dias/dia-20-chave.jpg", 22: "assets/img/natal/dias/dia-22-coroa.jpg",
+        14: "assets/img/natal/dias/dia-14-estrela-2.jpg", 18: "assets/img/natal/dias/dia-18-chama.jpg",
+        20: "assets/img/natal/dias/dia-20-chave-2.jpg", 22: "assets/img/natal/dias/dia-22-coroa.jpg",
         24: "assets/img/natal/dias/dia-24-estrela.jpg",
       },
       // Roteiro do Advento 2026: tema, reflexão, ação para a família e o biscoito do dia
