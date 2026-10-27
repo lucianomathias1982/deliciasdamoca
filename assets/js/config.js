@@ -59,9 +59,9 @@ window.CONFIG = {
         img: "assets/img/natal/caixa-tradicao-2.jpg", emoji: "📦",
       },
       {
-        id: "caixa-jardim", nome: "Caixa Jardim de Inverno", qtd: "12 biscoitos", preco: 89,
-        descricao: "A caixa mais colorida da coleção, só com cores naturais.",
-        sabores: ["xadrez", "espiral", "joia-goiabada", "principal", "pistache", "coco"],
+        id: "caixa-jardim", nome: "Caixa Vitral", qtd: "12 biscoitos", preco: 89,
+        descricao: "A caixa mais colorida da coleção, e toda a cor vem do próprio ingrediente: o verde do matcha e do pistache, o rosa da framboesa, o vermelho da goiabada, o âmbar do damasco. Seis sabores leves e frutados, para quem prefere o Natal delicado.",
+        sabores: ["xadrez", "janelinha", "joia-goiabada", "principal", "pistache", "coco"],
         img: "assets/img/natal/caixa-jardim-2.jpg", emoji: "🎁",
       },
       {
