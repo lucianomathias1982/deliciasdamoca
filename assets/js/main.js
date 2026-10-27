@@ -141,7 +141,9 @@
   $("[data-advento-desc]").textContent = adv.descricao;
   $("[data-advento-qtd]").textContent = adv.qtd;
   $("[data-advento-entrega]").textContent = `Entregue ${adv.entrega}`;
-  $("[data-advento-sabores]").textContent = `${new Set(Object.values(adv.dias).map((d) => d.sabor)).size} sabores ao longo do mês`;
+  // o amanteigado de laranja é variação do Amanteigado da Moça, não conta como sabor à parte
+  const saborBase = (id) => col.sabores.find((s) => s.id === id)?.variacaoDe || id;
+  $("[data-advento-sabores]").textContent = `${new Set(Object.values(adv.dias).map((d) => saborBase(d.sabor))).size} sabores ao longo do mês`;
   $("[data-advento-preco]").textContent = col.mostrarPrecos ? brl(adv.preco) : "";
   $("[data-advento-prazo]").textContent = prazoAdv.texto;
   const advImg = $("[data-advento-img]");

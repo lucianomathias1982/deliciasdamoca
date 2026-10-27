@@ -34,7 +34,7 @@ window.CONFIG = {
     // disponivel: true → mostra a tag "Disponível para encomendas" e o sabor aparece primeiro
     sabores: [
       { id: "principal", disponivel: true, nome: "Amanteigado da Moça", origem: "O biscoito da casa", descricao: "Massa amanteigada de baunilha e amêndoa que desmancha na boca, coberta de açúcar de baunilha. Feito em estrela, árvore, sino, anjo, coração e outros formatos.", img: "assets/img/natal/principal.jpg", emoji: "⭐" },
-      { id: "laranja", nome: "Amanteigado de laranja", origem: "Só no Advento", descricao: "A massa da casa com raspas de laranja, em meia-lua. Aparece no dia 8, festa da Imaculada Conceição.", img: "assets/img/natal/laranja.jpg", emoji: "🌙" },
+      { id: "laranja", variacaoDe: "principal", nome: "Amanteigado de laranja", origem: "Só no Advento", descricao: "A massa da casa com raspas de laranja, em meia-lua. Aparece no dia 8, festa da Imaculada Conceição.", img: "assets/img/natal/laranja.jpg", emoji: "🌙" },
       { id: "castanha", disponivel: true, nome: "Nevadinha de castanha-do-pará", origem: "Amanteigados", descricao: "Bolinha amanteigada de castanha-do-pará tostada, coberta de açúcar duas vezes, como neve.", img: "assets/img/natal/castanha.jpg", emoji: "🌰" },
       { id: "especiarias", disponivel: true, nome: "Biscoito de especiarias", origem: "Especiarias", descricao: "Cravo, canela, noz-moscada e gengibre, em bonequinhos com olhos e botões de glacê.", img: "assets/img/natal/especiarias-2.jpg", emoji: "🎄" },
       { id: "pao-de-mel", nome: "Pão de mel de cacau, café e cardamomo", origem: "Especiarias", descricao: "Massa de mel macia e escura, com cardamomo moído na hora e uma camada fina de glacê de cacau e café.", img: "assets/img/natal/pao-de-mel.jpg", emoji: "🍯" },
@@ -65,7 +65,7 @@ window.CONFIG = {
         img: "assets/img/natal/caixa-jardim-2.jpg", emoji: "🎁",
       },
       {
-        id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 169, destaque: "A mais completa",
+        id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 189, destaque: "A mais completa",
         descricao: "Dois de cada um dos 12 sabores, incluindo o botão de avelã, que só vem nesta caixa.",
         sabores: ["principal", "castanha", "especiarias", "pao-de-mel", "sonho-canela", "xadrez", "janelinha", "pistache", "coco", "craquelado", "doce-de-leite", "botao-avela"],
         img: "assets/img/natal/caixa-noite-2.jpg", emoji: "🎄",
@@ -74,7 +74,7 @@ window.CONFIG = {
 
     // Calendário do Advento, ligado ao calendário católico (dia → sabor e festa)
     advento: {
-      id: "advento", nome: "Calendário do Advento", qtd: "24 saquinhos numerados", preco: 189,
+      id: "advento", nome: "Calendário do Advento", qtd: "24 saquinhos numerados", preco: 219,
       descricao: "Um biscoito por dia, de 1º a 24 de dezembro, com um roteiro católico para viver o Advento em família: cada dia traz um tema, uma reflexão, uma ação e o biscoito que abre a janela do dia. São Nicolau no dia 6, a Imaculada Conceição no dia 8, Santa Luzia no dia 13 e as Antífonas do Ó de 17 a 23. A meia-lua, a lua aos pés de Maria, só aparece no dia 8.",
       encomendasAte: "2026-11-20",
       entrega: "entre 25 e 30 de novembro",
@@ -120,7 +120,7 @@ window.CONFIG = {
     // Saquinhos menores
     saquinhos: [
       { id: "saq-sabor", escolha: true, nome: "Saquinho de um sabor", qtd: "5 biscoitos do mesmo sabor", preco: 26, descricao: "Escolha um dos sabores disponíveis no campo de observações do pedido. É um ótimo mimo para professores, vizinhos e amigo-secreto.", img: "assets/img/natal/saq-sabor-3.jpg", emoji: "🛍️" },
-      { id: "saq-trio", nome: "Trio de Natal", qtd: "3 biscoitos", preco: 16, sabores: ["principal", "especiarias", "sonho-canela"], descricao: "Amanteigado da Moça, biscoito de especiarias e sonho de canela, numa bandejinha kraft dentro de saquinho com laço bordô.", img: "assets/img/natal/saq-trio-3.jpg", emoji: "✉️" },
+      { id: "saq-trio", nome: "Trio de Natal", qtd: "3 biscoitos", preco: 18, sabores: ["principal", "especiarias", "sonho-canela"], descricao: "Amanteigado da Moça, biscoito de especiarias e sonho de canela, numa bandejinha kraft dentro de saquinho com laço bordô.", img: "assets/img/natal/saq-trio-3.jpg", emoji: "✉️" },
       { id: "saq-arvore", nome: "Biscoito para a árvore", qtd: "1 biscoito com fita", preco: 7, minimo: 10, sabores: ["principal", "especiarias"], descricao: "Uma estrela de Amanteigado da Moça ou um bonequinho de especiarias, em saquinho com fita bordô para pendurar ou marcar o lugar na ceia. Pedido mínimo de 10.", img: "assets/img/natal/saq-arvore-3.jpg", emoji: "🎀" },
     ],
   },
