@@ -68,7 +68,7 @@ window.CONFIG = {
         id: "caixa-jardim", nome: "Caixa Vitral", qtd: "12 biscoitos", preco: 89,
         descricao: "A caixa mais colorida da coleção, e toda a cor vem do próprio ingrediente: o verde do matcha e do pistache, o rosa da framboesa, o vermelho da goiabada, o âmbar do damasco. Seis sabores leves e frutados, para quem prefere o Natal delicado.",
         sabores: ["xadrez", "janelinha", "joia-goiabada", "principal", "pistache", "coco"],
-        img: "assets/img/natal/caixa-jardim-2.jpg", emoji: "🎁",
+        img: "assets/img/natal/caixa-vitral.jpg", emoji: "🎁",
       },
       {
         id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 189, destaque: "A mais completa",
