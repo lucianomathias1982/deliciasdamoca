@@ -59,6 +59,12 @@ window.CONFIG = {
         img: "assets/img/natal/caixa-tradicao-2.jpg", emoji: "📦",
       },
       {
+        id: "caixa-pastorinhos", nome: "Caixa Pastorinhos", qtd: "12 biscoitos", preco: 79, destaque: "Para as crianças",
+        descricao: "Três de cada: craquelado de chocolate com Nutella, cookie de chocolate e doce de leite, bonequinho de especiarias com rostinho de glacê e Amanteigado da Moça em estrela, árvore e sino. Contém avelã.",
+        sabores: ["craquelado", "doce-de-leite", "especiarias", "principal"],
+        img: "assets/img/natal/caixa-pastorinhos.jpg", emoji: "🐑",
+      },
+      {
         id: "caixa-jardim", nome: "Caixa Vitral", qtd: "12 biscoitos", preco: 89,
         descricao: "A caixa mais colorida da coleção, e toda a cor vem do próprio ingrediente: o verde do matcha e do pistache, o rosa da framboesa, o vermelho da goiabada, o âmbar do damasco. Seis sabores leves e frutados, para quem prefere o Natal delicado.",
         sabores: ["xadrez", "janelinha", "joia-goiabada", "principal", "pistache", "coco"],
