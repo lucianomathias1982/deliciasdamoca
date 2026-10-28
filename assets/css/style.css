@@ -565,3 +565,8 @@ summary { font-family: var(--f-titulo); font-weight: 600; font-size: 1.1rem; let
 .rodape__marca b { font-size: 2rem; }
 .rodape__marca svg { width: 150px; height: 9px; margin: 4px 0 2px; }
 .rodape__marca small { font-family: var(--f-deco); font-weight: 600; letter-spacing: .34em; text-transform: uppercase; font-size: .78rem; }
+
+/* Caixas: 4 lado a lado, 2×2 no tablet, 1 no celular (nunca uma sozinha na linha) */
+#caixasGrade { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 1060px) { #caixasGrade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { #caixasGrade { grid-template-columns: 1fr; } }
