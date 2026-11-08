@@ -72,7 +72,7 @@ window.CONFIG = {
       },
       {
         id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 189, destaque: "A mais completa",
-        descricao: "Dois de cada um dos 12 sabores, incluindo o botão de avelã, que não vem nas outras caixas.",
+        descricao: "Dois de cada um dos 12 sabores, incluindo o botão de chocolate e avelã.",
         sabores: ["principal", "castanha", "especiarias", "pao-de-mel", "sonho-canela", "xadrez", "janelinha", "pistache", "coco", "craquelado", "doce-de-leite", "botao-avela"],
         img: "assets/img/natal/caixa-noite-2.jpg", emoji: "🎄",
       },
