@@ -47,7 +47,7 @@ window.CONFIG = {
       { id: "coco", nome: "Coroa de coco", origem: "Amanteigados", descricao: "Amanteigado de coco tostado e amêndoa, com borda de coco que doura no forno, como uma coroa de luz.", img: "assets/img/natal/coco.jpg", emoji: "🥥" },
       { id: "craquelado", nome: "Craquelado de chocolate com Nutella", origem: "Chocolate", descricao: "Chocolate rachado no açúcar de confeiteiro, com Nutella no centro.", img: "assets/img/natal/craquelado.jpg", emoji: "🍫" },
       { id: "doce-de-leite", nome: "Cookie de chocolate e doce de leite", origem: "Chocolate", descricao: "Cookie de chocolate recheado de doce de leite, com uma pitada de flor de sal.", img: "assets/img/natal/doce-de-leite.jpg", emoji: "🍮" },
-      { id: "botao-avela", nome: "Botão de chocolate e avelã", origem: "Chocolate", descricao: "Chocolate com uma avelã caramelizada presa no centro e flor de sal. Só vem na caixa grande.", img: "assets/img/natal/botao-avela.jpg", emoji: "🌰" },
+      { id: "botao-avela", nome: "Botão de chocolate e avelã", origem: "Chocolate", descricao: "Chocolate com uma avelã caramelizada presa no centro e flor de sal. Só vem na Caixa Noite Feliz e no Calendário do Advento.", img: "assets/img/natal/botao-avela.jpg", emoji: "🌰" },
     ],
 
     // Caixas de Natal (ficam "Disponível" só quando todos os sabores da caixa estão disponíveis)
@@ -72,7 +72,7 @@ window.CONFIG = {
       },
       {
         id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 189, destaque: "A mais completa",
-        descricao: "Dois de cada um dos 12 sabores, incluindo o botão de avelã, que só vem nesta caixa.",
+        descricao: "Dois de cada um dos 12 sabores, incluindo o botão de avelã, que não vem nas outras caixas.",
         sabores: ["principal", "castanha", "especiarias", "pao-de-mel", "sonho-canela", "xadrez", "janelinha", "pistache", "coco", "craquelado", "doce-de-leite", "botao-avela"],
         img: "assets/img/natal/caixa-noite-2.jpg", emoji: "🎄",
       },
@@ -88,9 +88,9 @@ window.CONFIG = {
       // foto específica do dia (a meia-lua só existe no Advento); nos outros dias usa a foto do sabor
       imgDia: {
         7: "assets/img/natal/dias/dia-07-colmeia.jpg", 8: "assets/img/natal/laranja.jpg",
-        10: "assets/img/natal/dias/dia-10-cajado.jpg", 12: "assets/img/natal/dias/dia-12-rosa.jpg",
+        10: "assets/img/natal/dias/dia-10-cajado.jpg", 12: "assets/img/natal/dias/dia-12-joia.jpg",
         14: "assets/img/natal/dias/dia-14-estrela-2.jpg", 18: "assets/img/natal/dias/dia-18-chama.jpg",
-        20: "assets/img/natal/dias/dia-20-chave-2.jpg", 22: "assets/img/natal/dias/dia-22-coroa.jpg",
+        20: "assets/img/natal/dias/dia-20-redonda.jpg", 22: "assets/img/natal/dias/dia-22-coroa.jpg",
         24: "assets/img/natal/dias/dia-24-estrela.jpg",
       },
       // Roteiro do Advento 2026: tema, reflexão, ação para a família e o biscoito do dia
@@ -106,8 +106,8 @@ window.CONFIG = {
         8: {"sabor": "laranja", "tema": "Imaculada Conceição", "reflexao": "Maria é preservada do pecado para ser a morada do Salvador.", "acao": "Reze a Ave-Maria com devoção pela santidade da família.", "biscoito": "Em meia-lua: a lua crescente aos pés de Maria.", "tipo": "festa"},
         9: {"sabor": "craquelado", "tema": "O Arrependimento", "reflexao": "Preparar o caminho exige olhar com honestidade para as próprias falhas.", "acao": "Anote três motivos de gratidão e peça perdão por uma falta.", "biscoito": "A casca que se abre, como o coração arrependido."},
         10: {"sabor": "pistache", "tema": "O Bom Pastor", "reflexao": "Jesus vem buscar a ovelha perdida (Lc 15,4).", "acao": "Reze por um parente ou amigo afastado da Igreja.", "biscoito": "Em cajado: o cajado de quem sai à procura."},
-        11: {"sabor": "doce-de-leite", "tema": "A Humildade", "reflexao": "Deus escolhe o que é simples para confundir os soberbos (1Cor 1,27).", "acao": "Elogie com sinceridade o trabalho de quem te serve no dia a dia.", "biscoito": "Simples por fora, doce por dentro."},
-        12: {"sabor": "espiral", "tema": "Nossa Senhora de Guadalupe", "reflexao": "A padroeira da América Latina aparece trazendo o Menino no ventre.", "acao": "Monte um cantinho de oração ou acenda a vela do Advento em família.", "biscoito": "Em botão de rosa: as rosas no manto de Juan Diego.", "tipo": "festa"},
+        11: {"sabor": "botao-avela", "tema": "A Humildade", "reflexao": "Deus escolhe o que é simples para confundir os soberbos (1Cor 1,27).", "acao": "Elogie com sinceridade o trabalho de quem te serve no dia a dia.", "biscoito": "Uma única avelã no centro: o pequeno que Deus escolhe."},
+        12: {"sabor": "joia-goiabada", "tema": "Nossa Senhora de Guadalupe", "reflexao": "A padroeira da América Latina aparece trazendo o Menino no ventre.", "acao": "Monte um cantinho de oração ou acenda a vela do Advento em família.", "biscoito": "O vermelho no centro, como as rosas no manto de Juan Diego.", "tipo": "festa"},
         13: {"sabor": "coco", "tema": "A Luz do Mundo", "reflexao": "No dia de Santa Luzia, lembramos que Cristo dissipa as trevas.", "acao": "Ligue ou mande um áudio carinhoso a um parente idoso ou distante.", "biscoito": "A borda dourada como coroa de luz.", "tipo": "festa"},
         14: {"sabor": "janelinha", "tema": "Alegria (Gaudete)", "reflexao": "“Alegrai-vos sempre no Senhor; o Senhor está perto” (Fl 4,4-5).", "acao": "Prepare um lanche surpresa ou faça um elogio a quem mora com você.", "biscoito": "Com janela em estrela: a janela que brilha."},
         15: {"sabor": "sonho-canela", "tema": "São José", "reflexao": "O homem justo que acolheu os planos de Deus sem hesitar.", "acao": "Ajude numa tarefa doméstica pesada, sem que ninguém precise pedir.", "biscoito": "Deus falou a José em sonho (Mt 1,20)."},
@@ -115,7 +115,7 @@ window.CONFIG = {
         17: {"sabor": "xadrez", "tema": "Ó Sabedoria", "reflexao": "Começam as Antífonas do Ó: Cristo é a Sabedoria de Deus.", "acao": "Leia em silêncio o primeiro capítulo do Evangelho de Lucas.", "biscoito": "O tabuleiro, jogo dos sábios.", "tipo": "antifona"},
         18: {"sabor": "pao-de-mel", "tema": "Ó Adonai", "reflexao": "O Senhor que guiou Israel e falou a Moisés na sarça ardente.", "acao": "Reze de joelhos por cinco minutos, entregando a Deus a direção da sua vida.", "biscoito": "Em chama: a sarça que ardia sem se consumir.", "tipo": "antifona"},
         19: {"sabor": "castanha", "tema": "Ó Raiz de Jessé", "reflexao": "O sinal erguido diante dos povos.", "acao": "Monte o presépio e deixe a manjedoura vazia até o dia 24.", "biscoito": "A raiz que dá fruto.", "tipo": "antifona"},
-        20: {"sabor": "janelinha", "tema": "Ó Chave de Davi", "reflexao": "Aquele que abre as portas trancadas do coração.", "acao": "Procure a confissão ou faça um exame de consciência sem pressa.", "biscoito": "Com janela em forma de chave: a fechadura recortada na massa.", "tipo": "antifona"},
+        20: {"sabor": "janelinha", "tema": "Ó Chave de Davi", "reflexao": "Aquele que abre as portas trancadas do coração.", "acao": "Procure a confissão ou faça um exame de consciência sem pressa.", "biscoito": "Com janela redonda: a porta que se abre.", "tipo": "antifona"},
         21: {"sabor": "coco", "tema": "Ó Sol Nascente", "reflexao": "O Sol da Justiça vem iluminar quem está nas trevas.", "acao": "Passe o dia sem reclamar de nenhuma contrariedade.", "biscoito": "O sol dourado, no dia mais longo do ano.", "tipo": "antifona"},
         22: {"sabor": "especiarias", "tema": "Ó Rei das Nações", "reflexao": "O desejado de todos os povos, a pedra angular.", "acao": "Escreva uma carta de intenções para deixar aos pés do presépio no Natal.", "biscoito": "Em coroa dourada: a coroa do Rei.", "tipo": "antifona"},
         23: {"sabor": "sonho-canela", "tema": "Ó Emanuel", "reflexao": "“Deus conosco”: Ele assume a nossa carne.", "acao": "Reze pelas gestantes e pelas crianças em risco ou abandonadas.", "biscoito": "O sonho que se cumpre.", "tipo": "antifona"},
