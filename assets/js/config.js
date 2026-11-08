@@ -30,6 +30,11 @@ window.CONFIG = {
     entregaAte: "2026-12-23",
     mostrarPrecos: true,
 
+    // Reserva: produto com sabores ainda em teste recebe pedidos com sinal.
+    // No produto: reserva: { leva: "texto opcional do limite", texto: "..." }
+    // Quando acabar a leva, acrescente  esgotado: true  no produto.
+    reservaAviso: "Biscoitos feitos à mão em pequenos lotes. Se algum sabor precisar mudar, avisamos antes da entrega. Você escolhe a troca ou recebe o sinal de volta.",
+
     // Os sabores da linha (ficha de teste de Natal 2026)
     // disponivel: true → mostra a tag "Disponível para encomendas" e o sabor aparece primeiro
     sabores: [
@@ -66,12 +71,14 @@ window.CONFIG = {
       },
       {
         id: "caixa-jardim", nome: "Caixa Vitral", qtd: "12 biscoitos", preco: 89,
+        reserva: { texto: "Reserve com sinal de 50% via Pix. Entregas a partir de 1º de dezembro." },
         descricao: "A caixa mais colorida da coleção, e toda a cor vem do próprio ingrediente: o verde do matcha e do pistache, o rosa da framboesa, o vermelho da goiabada, o âmbar do damasco. Seis sabores leves e frutados, para quem prefere o Natal delicado.",
         sabores: ["xadrez", "janelinha", "joia-goiabada", "principal", "pistache", "coco"],
         img: "assets/img/natal/caixa-vitral.jpg", emoji: "🎁",
       },
       {
         id: "caixa-noite", nome: "Caixa Noite Feliz", qtd: "24 biscoitos", preco: 189, destaque: "A mais completa",
+        reserva: { texto: "Reserve com sinal de 50% via Pix. Entregas a partir de 1º de dezembro." },
         descricao: "Dois de cada um dos 12 sabores, incluindo o botão de chocolate e avelã.",
         sabores: ["principal", "castanha", "especiarias", "pao-de-mel", "sonho-canela", "xadrez", "janelinha", "pistache", "coco", "craquelado", "doce-de-leite", "botao-avela"],
         img: "assets/img/natal/caixa-noite-2.jpg", emoji: "🎄",
@@ -81,6 +88,7 @@ window.CONFIG = {
     // Calendário do Advento, ligado ao calendário católico (dia → sabor e festa)
     advento: {
       id: "advento", nome: "Calendário do Advento", qtd: "24 saquinhos numerados", preco: 219,
+      reserva: { leva: "Primeira leva de 25 calendários", texto: "Reserve com sinal de 50% via Pix. Entrega entre 25 e 30 de novembro." },
       descricao: "Um biscoito por dia, de 1º a 24 de dezembro, com um roteiro católico para viver o Advento em família: cada dia traz um tema, uma reflexão, uma ação e o biscoito que abre a janela do dia. São Nicolau no dia 6, a Imaculada Conceição no dia 8, Santa Luzia no dia 13 e as Antífonas do Ó de 17 a 23. A meia-lua, a lua aos pés de Maria, só aparece no dia 8.",
       encomendasAte: "2026-11-20",
       entrega: "entre 25 e 30 de novembro",

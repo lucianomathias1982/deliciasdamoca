@@ -101,26 +101,41 @@
   const saboresDe = (p) => (p.id === adv.id ? [...new Set(Object.values(adv.dias).map((d) => d.sabor))] : p.sabores || []);
   const disponivel = (p) => (p.escolha ? col.sabores.some((s) => s.disponivel) : saboresDe(p).every(saborOk));
   const meAvise = (p) => `<a class="btn btn--sm btn--linha" data-zap="Olá! Quero ser avisado(a) quando abrirem as encomendas de: ${p.nome} 🎄" href="#">Me avise quando abrir</a>`;
+  const meAviseLeva = (p) => `<a class="btn btn--sm btn--linha" data-zap="Olá! Quero ser avisado(a) se abrir uma nova leva de: ${p.nome} 🎄" href="#">Me avise da próxima leva</a>`;
+  // Situação do produto: ok (encomenda), reserva (sabores em teste, com sinal), esgotado ou breve
+  const situacao = (p) => (p.esgotado ? "esgotado" : disponivel(p) ? "ok" : p.reserva ? "reserva" : "breve");
+  const ROTULO = { ok: "Disponível para encomendas", reserva: "Reservas abertas", esgotado: "Esgotado", breve: "Em breve" };
+  const ehReserva = (p) => situacao(p) === "reserva";
+  const blocoReserva = (p) => `<div class="reserva">${p.reserva.leva ? `<p class="reserva__leva">${p.reserva.leva}</p>` : ""}<p class="reserva__texto">${p.reserva.texto}</p></div>`;
+  const avisoReserva = () => `<small class="reserva__aviso">${col.reservaAviso}</small>`;
 
-  function controles(p, encerrado) {
+  function controles(p, encerrado, rotulo = "Adicionar") {
     return `
       <div class="qtd" data-produto="${p.id}">
         <button type="button" data-acao="menos" aria-label="Diminuir ${p.nome}" ${encerrado ? "disabled" : ""}>−</button>
         <output aria-live="polite">0</output>
         <button type="button" data-acao="mais" aria-label="Aumentar ${p.nome}" ${encerrado ? "disabled" : ""}>+</button>
-        <button type="button" class="btn btn--sm btn--terracota" data-acao="add" ${encerrado ? "disabled" : ""}>Adicionar</button>
+        <button type="button" class="btn btn--sm btn--terracota" data-acao="add" ${encerrado ? "disabled" : ""}>${rotulo}</button>
       </div>`;
   }
   function cartao(p) {
     const el = document.createElement("article");
     el.className = "produto moldura";
     el.dataset.id = p.id;
-    const ok = disponivel(p);
-    el.classList.add(ok ? "produto--disponivel" : "produto--breve");
+    const sit = situacao(p);
+    const ativo = sit === "ok" || sit === "reserva";
+    el.classList.add(ativo ? "produto--disponivel" : "produto--breve", `produto--${sit}`);
+    // na reserva os sabores em teste não levam "em breve": o aviso da reserva já cobre a troca
     const chips = (p.escolha ? col.sabores.filter((s) => s.disponivel).map((s) => s.id) : p.sabores || [])
-      .map((id) => `<li class="${saborOk(id) ? "ok" : "breve"}">${sabor(id).nome}${saborOk(id) ? "" : " <small>em breve</small>"}</li>`).join("");
+      .map((id) => (saborOk(id) || sit === "reserva" ? `<li class="ok">${sabor(id).nome}</li>` : `<li class="breve">${sabor(id).nome} <small>em breve</small></li>`)).join("");
+    const acao = {
+      ok: () => controles(p, prazoCol.encerrado),
+      reserva: () => blocoReserva(p) + controles(p, prazoCol.encerrado, "Reservar") + avisoReserva(),
+      esgotado: () => meAviseLeva(p),
+      breve: () => meAvise(p),
+    }[sit]();
     el.innerHTML = `
-      <span class="produto__tag ${ok ? "" : "produto__tag--breve"}">${ok ? "Disponível para encomendas" : "Em breve"}</span>
+      <span class="produto__tag ${ativo ? "" : "produto__tag--breve"}">${ROTULO[sit]}</span>
       <div class="produto__img"><img src="${p.img}" alt="${p.nome}" loading="lazy" width="640" height="480"></div>
       <div class="produto__corpo">
         <h3>${p.nome}</h3>
@@ -128,7 +143,7 @@
         <p>${p.descricao}</p>
         ${chips ? `<ul class="produto__sabores">${chips}</ul>` : ""}
         ${col.mostrarPrecos && p.preco ? `<p class="produto__preco">${brl(p.preco)}${p.minimo ? ` <small>cada · mín. ${p.minimo}</small>` : ""}</p>` : ""}
-        ${ok ? controles(p, prazoCol.encerrado) : meAvise(p)}
+        ${acao}
       </div>`;
     imagemOuEmoji($("img", el), p.emoji);
     return el;
@@ -150,7 +165,17 @@
   advImg.src = adv.img;
   const fotoDia = (d, s) => (adv.imgDia && adv.imgDia[d]) || s.img;
   if (prazoAdv.encerrado) $$("#advento .qtd button").forEach((b) => (b.disabled = true));
-  if (!disponivel(adv)) {
+  const sitAdv = situacao(adv);
+  if (sitAdv === "reserva") {
+    $("[data-advento-nome]").insertAdjacentHTML("beforebegin", `<span class="advento__tag advento__tag--reserva">Reservas abertas${adv.reserva.leva ? ` · ${adv.reserva.leva}` : ""}</span>`);
+    $("[data-advento-prazo]").textContent = `${adv.reserva.texto} ${prazoAdv.encerrado ? "Reservas encerradas." : prazoAdv.texto.replace("Encomendas", "Reservas") + "."}`;
+    $("#advento .qtd [data-acao=add]").textContent = "Reservar";
+    $("#advento .qtd").insertAdjacentHTML("afterend", avisoReserva());
+  } else if (sitAdv === "esgotado") {
+    $("[data-advento-nome]").insertAdjacentHTML("beforebegin", '<span class="advento__tag">Esgotado</span>');
+    $("[data-advento-prazo]").textContent = "Esta leva de calendários esgotou.";
+    $("#advento .qtd").outerHTML = meAviseLeva(adv);
+  } else if (sitAdv === "breve") {
     $("[data-advento-nome]").insertAdjacentHTML("beforebegin", '<span class="advento__tag">Em breve</span>');
     $("[data-advento-prazo]").innerHTML = `<span class="advento__breve">Em breve</span> Avisamos quando abrirem as encomendas do calendário.`;
     $("#advento .qtd").outerHTML = meAvise(adv);
@@ -221,6 +246,8 @@
   let fundo;
   const itensPedido = () => [...pedido].map(([id, q]) => ({ p: prod(id), q }));
 
+  const sinalReservas = (itens) => itens.filter(({ p }) => ehReserva(p)).reduce((s, { p, q }) => s + (p.preco || 0) * q, 0) / 2;
+
   function atualizar() {
     $$(".qtd[data-produto]").forEach((box) => {
       const q = pedido.get(box.dataset.produto) || 0;
@@ -233,10 +260,12 @@
     sacolaBtn.hidden = totalQtd === 0;
     $("#sacolaQtd").textContent = totalQtd;
     $("#sacolaItens").innerHTML = itens.length
-      ? itens.map(({ p, q }) => `<li><span>${q}× ${p.nome}<small>${p.qtd}</small></span>${col.mostrarPrecos ? `<b>${brl(p.preco * q)}</b>` : ""}</li>`).join("")
+      ? itens.map(({ p, q }) => `<li><span>${q}× ${p.nome}<small>${p.qtd}${ehReserva(p) ? " · reserva" : ""}</small></span>${col.mostrarPrecos ? `<b>${brl(p.preco * q)}</b>` : ""}</li>`).join("")
       : "<li>Seu pedido está vazio.</li>";
     const total = itens.reduce((s, i) => s + (i.p.preco || 0) * i.q, 0);
-    $("#sacolaTotal").textContent = col.mostrarPrecos && total ? `Total estimado: ${brl(total)}` : "";
+    const sinal = sinalReservas(itens);
+    $("#sacolaTotal").innerHTML = col.mostrarPrecos && total
+      ? `Total estimado: ${brl(total)}${sinal ? `<small class="sacola__sinal">Sinal das reservas (50% via Pix): ${brl(sinal)}</small>` : ""}` : "";
     if (!totalQtd && !sacola.hidden) fecharSacola();
   }
   function abrirSacola() {
@@ -261,13 +290,17 @@
     const nome = $("#pNome").value.trim();
     const data = $("#pData").value;
     const obs = $("#pObs").value.trim();
+    const itens = itensPedido();
+    const soReserva = itens.every(({ p }) => ehReserva(p));
     const linhas = [
-      `Olá! Quero encomendar da *${col.titulo}* 🎄`,
+      `Olá! Quero ${soReserva ? "reservar" : "encomendar"} da *${col.titulo}* 🎄`,
       "",
-      ...itensPedido().map(({ p, q }) => `• ${q}× ${p.nome} (${p.qtd})${col.mostrarPrecos ? ` — ${brl(p.preco * q)}` : ""}`),
+      ...itens.map(({ p, q }) => `• ${q}× ${p.nome} (${p.qtd})${ehReserva(p) ? " · reserva" : ""}${col.mostrarPrecos ? ` — ${brl(p.preco * q)}` : ""}`),
     ];
-    const total = itensPedido().reduce((s, i) => s + (i.p.preco || 0) * i.q, 0);
+    const total = itens.reduce((s, i) => s + (i.p.preco || 0) * i.q, 0);
     if (col.mostrarPrecos && total) linhas.push("", `Total estimado: ${brl(total)}`);
+    const sinal = sinalReservas(itens);
+    if (col.mostrarPrecos && sinal) linhas.push(`Sinal das reservas (50% via Pix): ${brl(sinal)}`);
     linhas.push("");
     if (nome) linhas.push(`Nome: ${nome}`);
     if (data) linhas.push(`Data desejada: ${fmtData(parseData(data), { day: "2-digit", month: "2-digit", year: "numeric" })}`);
